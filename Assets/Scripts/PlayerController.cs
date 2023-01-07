@@ -3,13 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float maxSpeed = 3f;
+    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] private float crouchSpeed = 1f;
 
     private Transform _view;
     private CharacterController _controller;
 
     private Vector2 _lookInput;
     private Vector2 _moveInput;
+
+    private bool _isCrouching;
 
     private void Awake()
     {
@@ -23,14 +26,26 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         GetInput();
+
         Look();
         Move();
+
+        Crouch();
     }
 
     private void GetInput()
     {
         _lookInput = new Vector2(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"));
         _moveInput = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
+
+        _isCrouching = Input.GetKey(KeyCode.LeftControl);
+    }
+
+    private void Crouch()
+    {
+        // Change controller height according to whether the player is crouching or not
+        if (_isCrouching) _controller.height = Mathf.Lerp(_controller.height, 1f, 0.05f);
+        else _controller.height = Mathf.Lerp(_controller.height, 2f, 0.05f);
     }
 
     private void Look()
@@ -51,7 +66,8 @@ public class PlayerController : MonoBehaviour
         // Apply gravity
         movement.y = _controller.isGrounded ? -5f : movement.y - 5f;
 
-        _controller.Move(maxSpeed * Time.deltaTime * movement);
+        var moveSpeed = _isCrouching ? crouchSpeed : walkSpeed;
+        _controller.Move(moveSpeed * Time.deltaTime * movement);
     }
 
     #region Pitch Clamper
