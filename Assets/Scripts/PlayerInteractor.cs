@@ -14,6 +14,9 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Awake()
     {
+        // Lock the cursor (UI interactions are done separately)
+        Cursor.lockState = CursorLockMode.Locked;
+
         // Ignore Player layer
         _mask = ~LayerMask.GetMask("Player");
 
