@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1108379463480979929, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
       propertyPath: m_Name
-      value: Fertilizer Dispenser
+      value: Plant A Dispenser
       objectReference: {fileID: 0}
     - target: {fileID: 1108379463480979933, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
@@ -20,17 +20,17 @@ PrefabInstance:
     - target: {fileID: 1108379463480979933, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1108379463480979933, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1108379463480979933, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 1108379463480979933, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: prefab
       value: 
-      objectReference: {fileID: 2072966283907631365, guid: e30995ab1f55d544c815939ea839c08c,
+      objectReference: {fileID: 16435483911900484, guid: 3001597fb3ec66f4ea2ae3f8736ba6d5,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ceff724e599a404b888ebfd8fc51ee9, type: 3}
