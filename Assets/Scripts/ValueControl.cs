@@ -5,10 +5,10 @@ using UnityEngine;
 public class ValueControl : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float min;
-    [SerializeField] private float max;
-    [SerializeField] private float delta;
-    [SerializeField] private float defaultValue;
+    public float min;
+    public float max;
+    public float delta;
+    public float defaultValue;
 
     public float Current { get; private set; }
 
