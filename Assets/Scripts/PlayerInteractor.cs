@@ -1,8 +1,10 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerHands))]
 public class PlayerInteractor : MonoBehaviour
 {
     public Interactable LookingAt { get; private set; }
+    public PlayerHands Hands { get; private set; }
 
     [Header("Settings")]
     [SerializeField] private float interactionDistance;
@@ -14,6 +16,8 @@ public class PlayerInteractor : MonoBehaviour
     {
         // Ignore Player layer
         _mask = ~LayerMask.GetMask("Player");
+
+        Hands = GetComponent<PlayerHands>();
     }
 
     private void Update()

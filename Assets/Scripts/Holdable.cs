@@ -17,7 +17,7 @@ public abstract class Holdable : Interactable
 
     public override void Interact(PlayerInteractor interactor)
     {
-        interactor.GetComponent<PlayerHands>().PickUp(this);
+        interactor.Hands.PickUp(this);
     }
 
     public void AttachToSocket(Transform socket)
