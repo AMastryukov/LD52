@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerHands))]
 public class PlayerInteractor : MonoBehaviour
 {
     public Interactable LookingAt { get; private set; }
+    public PlayerHands Hands { get; private set; }
 
     [Header("Settings")]
     [SerializeField] private float interactionDistance;
@@ -14,18 +14,19 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Awake()
     {
-        _mask = Physics.AllLayers;
+        // Ignore Player layer
+        _mask = ~LayerMask.GetMask("Player");
+
+        Hands = GetComponent<PlayerHands>();
     }
 
     private void Update()
     {
         CastLookingRay();
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CastInteractionRay();
-        }
+        if (Input.GetKeyDown(KeyCode.E)) CastInteractionRay();
     }
+
 
     #region Raycasts
     /// <summary>
