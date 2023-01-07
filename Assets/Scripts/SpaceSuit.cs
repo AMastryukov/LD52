@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class SpaceSuit : MonoBehaviour
+public class SpaceSuit : Interactable
 {
+    public Action OnTaken;
+
+    public OxygenTank OxygenTank => _oxygenTankSocket.Tank;
     private OxygenTankSocket _oxygenTankSocket;
-    private OxygenTank _oxygenTank => _oxygenTankSocket.Tank;
 
     private void Awake()
     {
         _oxygenTankSocket = GetComponentInChildren<OxygenTankSocket>();
     }
 
-    public void TryConsumeOxygen()
+    public override void Interact(PlayerInteractor interactor)
+    {
+        interactor.Body.PutOnSpaceSuit(this);
+        OnTaken?.Invoke();
+    }
+
+    public void ConsumeOxygen()
     {
 
     }
