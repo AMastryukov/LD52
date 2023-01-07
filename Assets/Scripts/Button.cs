@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class DebugInteractable : Interactable
+public class Button : Interactable
 {
+    [SerializeField] private UnityEvent action;
+
     public override void Interact(PlayerInteractor interactor)
     {
-        Debug.Log($"Debug interaction");
+        action?.Invoke();
     }
 }

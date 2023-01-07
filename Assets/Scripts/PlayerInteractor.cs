@@ -35,13 +35,13 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.forward, out _hit, interactionDistance, _mask))
         {
-            Debug.DrawLine(transform.position, _hit.point, Color.white);
+            Debug.DrawLine(transform.position, _hit.point, Color.yellow);
 
             LookingAt = _hit.collider.GetComponent<Interactable>();
             return;
         }
 
-        Debug.DrawLine(transform.position, transform.position + transform.forward * interactionDistance, Color.yellow);
+        Debug.DrawLine(transform.position, transform.position + transform.forward * interactionDistance, Color.white);
         LookingAt = null;
     }
 
