@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
@@ -14,18 +12,17 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Awake()
     {
-        _mask = Physics.AllLayers;
+        // Ignore Player layer
+        _mask = ~LayerMask.GetMask("Player");
     }
 
     private void Update()
     {
         CastLookingRay();
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CastInteractionRay();
-        }
+        if (Input.GetKeyDown(KeyCode.E)) CastInteractionRay();
     }
+
 
     #region Raycasts
     /// <summary>
