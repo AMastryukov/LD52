@@ -7,21 +7,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float crouchSpeed = 1f;
 
     private Transform _view;
+    private PlayerInteractor _interactor;
+    private Transform _camera;
     private CharacterController _controller;
 
     private Vector2 _lookInput;
     private Vector2 _moveInput;
 
     private bool _isCrouching;
+    private bool _isHijacked;
 
     private void Awake()
     {
-        _view = GetComponentInChildren<Camera>().transform;
+        _view = GetComponentInChildren<PlayerInteractor>().transform;
+        _interactor = _view.GetComponent<PlayerInteractor>();
         _controller = GetComponent<CharacterController>();
+        _camera = _view.GetComponentInChildren<Camera>().transform;
     }
 
     private void Update()
     {
+        if (_isHijacked) return;
+
         GetInput();
 
         Look();
@@ -65,6 +72,30 @@ public class PlayerController : MonoBehaviour
 
         var moveSpeed = _isCrouching ? crouchSpeed : walkSpeed;
         _controller.Move(moveSpeed * Time.deltaTime * movement);
+    }
+
+    public void HijackCamera(Transform transform, bool showCursor = true)
+    {
+        // Move camera to new position & rotation
+        _camera.position = transform.position;
+        _camera.rotation = transform.rotation;
+
+        _isHijacked = true;
+        _interactor.enabled = false;
+
+        if (showCursor) Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void ResetCamera()
+    {
+        // Reset camera position & rotation
+        _camera.localPosition = Vector3.zero;
+        _camera.localRotation = Quaternion.identity;
+
+        _isHijacked = false;
+        _interactor.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     #region Pitch Clamper
