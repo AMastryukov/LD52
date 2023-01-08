@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Button : Interactable
+public class PhysicalButton : Interactable
 {
     [SerializeField] private UnityEvent action;
 
