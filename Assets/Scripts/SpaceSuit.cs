@@ -20,9 +20,4 @@ public class SpaceSuit : Interactable
         interactor.Body.PutOnSpaceSuit(this);
         OnTaken?.Invoke();
     }
-
-    public void ConsumeOxygen()
-    {
-
-    }
 }

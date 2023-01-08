@@ -22,8 +22,18 @@ public class ValueControl : MonoBehaviour
         Current = Mathf.Clamp(Current + delta, min, max);
     }
 
+    public void Increase(float amount)
+    {
+        Current = Mathf.Clamp(Current + amount, min, max);
+    }
+
     public void Decrease()
     {
         Current = Mathf.Clamp(Current - delta, min, max);
+    }
+
+    public void Decrease(float amount)
+    {
+        Current = Mathf.Clamp(Current - amount, min, max);
     }
 }

@@ -5,7 +5,7 @@ public class PlayerInteractor : MonoBehaviour
 {
     public Interactable LookingAt { get; private set; }
     public PlayerHands Hands { get; private set; }
-    public PlayerBody Body { get; private set; }
+    public Player Body { get; private set; }
 
     [Header("Settings")]
     [SerializeField] private float interactionDistance;
@@ -22,7 +22,7 @@ public class PlayerInteractor : MonoBehaviour
         _mask = ~LayerMask.GetMask("Player");
 
         Hands = GetComponent<PlayerHands>();
-        Body = GetComponent<PlayerBody>();
+        Body = GetComponent<Player>();
     }
 
     private void Update()

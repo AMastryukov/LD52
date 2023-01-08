@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min: 0
-  max: 100
+  max: 60
   delta: 1
   defaultValue: 0
 --- !u!114 &488411952343472623

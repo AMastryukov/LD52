@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(ValueControl))]
 public class OxygenTank : Holdable
 {
+    public float Amount => _oxygen.Current;
     private ValueControl _oxygen;
 
     protected override void Awake()
@@ -13,13 +14,13 @@ public class OxygenTank : Holdable
         _oxygen = GetComponent<ValueControl>();
     }
 
-    public void AddOxygen()
+    public void AddOxygen(float amount)
     {
-        _oxygen.Increase();
+        if (_oxygen.Current < _oxygen.max) _oxygen.Increase(amount);
     }
 
-    public void RemoveOxygen()
+    public void ConsumeOxygen(float amount)
     {
-        _oxygen.Decrease();
+        if (_oxygen.Current > _oxygen.min) _oxygen.Decrease(amount);
     }
 }
