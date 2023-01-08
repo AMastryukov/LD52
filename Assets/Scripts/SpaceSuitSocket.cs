@@ -24,7 +24,7 @@ public class SpaceSuitSocket : Interactable
     private void Attach(SpaceSuit newSuit)
     {
         // Do not allow multiple suits in the same socket
-        if (suit != null) { return; }
+        if (suit != null && suit != newSuit) { return; }
 
         // Do parenting manually (SpaceSuit is not a Holdable - bad design)
         newSuit.transform.SetParent(transform);

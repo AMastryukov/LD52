@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Rigidbody))]
 public abstract class Holdable : Interactable
 {
+    public Action OnTaken;
+
     public Collider Collider { get; private set; }
     public Rigidbody RigidBody { get; private set; }
 
@@ -20,6 +23,7 @@ public abstract class Holdable : Interactable
     public override void Interact(PlayerInteractor interactor)
     {
         interactor.Hands.PickUp(this);
+        OnTaken?.Invoke();
     }
 
     public void AttachToSocket(Transform socket)

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (IsWearingSpaceSuit)
+        if (IsWearingSpaceSuit && SpaceSuit.OxygenTank != null)
         {
             SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
             Debug.Log($"Current Oxygen Level: {SpaceSuit.OxygenTank.Amount}");
