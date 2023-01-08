@@ -20,6 +20,13 @@ public class Player : MonoBehaviour
         _airMask = LayerMask.GetMask("Air");
     }
 
+    private void Start()
+    {
+        // Equip a space suit from the beginning
+        var spaceSuit = GetComponentInChildren<SpaceSuit>(true);
+        if (spaceSuit != null) PutOnSpaceSuit(spaceSuit);
+    }
+
     private void Update()
     {
         if (IsDead) return;

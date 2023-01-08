@@ -7,7 +7,7 @@ public class SpaceSuit : Interactable
 {
     public Action OnTaken;
 
-    public OxygenTank OxygenTank => _oxygenTankSocket.Tank;
+    public OxygenTank OxygenTank => _oxygenTankSocket == null ? null : _oxygenTankSocket.Tank;
     private OxygenTankSocket _oxygenTankSocket;
 
     private void Awake()
