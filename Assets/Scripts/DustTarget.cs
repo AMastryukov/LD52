@@ -22,7 +22,7 @@ public class DustTarget : Interactable
         dust.SetActive(IsDusty);
     }
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
         if (IsDusty) Clean();
     }

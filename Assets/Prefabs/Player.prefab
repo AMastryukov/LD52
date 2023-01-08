@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3750679839181138153}
   - component: {fileID: 3750679839181138154}
   - component: {fileID: 3750679839181138155}
+  - component: {fileID: 4596260103043618899}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -66,6 +67,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2
   crouchSpeed: 1
+--- !u!114 &4596260103043618899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3750679839181138149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a6ffc46ee4397409894b6d9451facf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suitHelmet: {fileID: 5909568274731964083}
 --- !u!1 &3750679839711290647
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,8 +93,6 @@ GameObject:
   - component: {fileID: 3750679839711290648}
   - component: {fileID: 3750679839711290651}
   - component: {fileID: 3750679839711290652}
-  - component: {fileID: 3750679839711290653}
-  - component: {fileID: 3447376385786527927}
   m_Layer: 3
   m_Name: View
   m_TagString: MainCamera
@@ -202,32 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionDistance: 1.5
---- !u!114 &3750679839711290653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3750679839711290647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5578babfd677e604fac73408d9a274c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdingSocket: {fileID: 3750679840372986494}
---- !u!114 &3447376385786527927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3750679839711290647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a6ffc46ee4397409894b6d9451facf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suitHelmet: {fileID: 5909568274731964083}
 --- !u!1 &3750679840372986493
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3750679840372986494}
+  - component: {fileID: 1927623395364787557}
   m_Layer: 3
   m_Name: Holding Socket
   m_TagString: Untagged
@@ -259,6 +246,18 @@ Transform:
   m_Father: {fileID: 3750679839711290650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927623395364787557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3750679840372986493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5578babfd677e604fac73408d9a274c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5909568274731964083
 GameObject:
   m_ObjectHideFlags: 0

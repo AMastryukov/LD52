@@ -4,8 +4,7 @@ using UnityEngine;
 public class PlayerInteractor : MonoBehaviour
 {
     public Interactable LookingAt { get; private set; }
-    public PlayerHands Hands { get; private set; }
-    public Player Body { get; private set; }
+    public Player Player { get; private set; }
 
     [Header("Settings")]
     [SerializeField] private float interactionDistance;
@@ -21,8 +20,7 @@ public class PlayerInteractor : MonoBehaviour
         // Ignore Player layer
         _mask = ~LayerMask.GetMask("Player");
 
-        Hands = GetComponent<PlayerHands>();
-        Body = GetComponent<Player>();
+        Player = GetComponentInParent<Player>();
     }
 
     private void Update()
@@ -31,7 +29,6 @@ public class PlayerInteractor : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)) CastInteractionRay();
     }
-
 
     #region Raycasts
     /// <summary>
@@ -60,7 +57,7 @@ public class PlayerInteractor : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out _hit, interactionDistance, _mask))
         {
             var interactable = _hit.collider.GetComponent<Interactable>();
-            if (interactable != null) interactable.Interact(this);
+            if (interactable != null) interactable.Interact(Player);
 
             Debug.DrawLine(transform.position, _hit.point, Color.green);
         }

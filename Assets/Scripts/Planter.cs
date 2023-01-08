@@ -26,7 +26,7 @@ public class Planter : Interactable
         fertilizerMesh.SetActive(_isFertilized);
     }
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
         // If player is holding a fertilizer in their hand, fertilize the planter
         if (!IsFertilized && interactor.Hands.Holding is FertilizerBag fertilizer)

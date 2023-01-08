@@ -13,7 +13,7 @@ public class OxygenTankSocket : Interactable
         if (tank != null) Attach(tank);
     }
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
         if (interactor.Hands.Holding is OxygenTank tank)
         {

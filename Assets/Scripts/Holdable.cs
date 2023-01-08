@@ -20,7 +20,7 @@ public abstract class Holdable : Interactable
         RigidBody = GetComponent<Rigidbody>();
     }
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
         interactor.Hands.PickUp(this);
         OnTaken?.Invoke();

@@ -7,7 +7,6 @@ public class OxygenTank : Holdable
 {
     public float Amount => _oxygen.Current;
     public bool IsFull => Amount == _oxygen.max;
-    public float Max => _oxygen.max;
 
     private ValueControl _oxygen;
 

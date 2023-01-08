@@ -5,14 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public SpaceSuit SpaceSuit { get; private set; }
+    public PlayerHands Hands { get; private set; }
     public bool IsWearingSpaceSuit => SpaceSuit != null;
-    public bool IsInSpace => false;
+    public bool IsInSpace { get; private set; }
     public bool IsDead { get; private set; }
 
     [SerializeField] private GameObject suitHelmet;
 
+    private LayerMask _airMask;
+
+    private void Awake()
+    {
+        Hands = GetComponentInChildren<PlayerHands>();
+        _airMask = LayerMask.GetMask("Air");
+    }
+
     private void Update()
     {
+        if (IsDead) return;
+
+        CheckForAir();
+
         if (IsWearingSpaceSuit && SpaceSuit.OxygenTank != null)
         {
             SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
@@ -57,5 +70,10 @@ public class Player : MonoBehaviour
     {
         IsDead = true;
         Debug.Log($"YOU ARE DEAD: {cause}");
+    }
+
+    private void CheckForAir()
+    {
+        IsInSpace = !Physics.CheckBox(suitHelmet.transform.position, Vector3.one * 0.1f, Quaternion.identity, _airMask, QueryTriggerInteraction.Collide);
     }
 }

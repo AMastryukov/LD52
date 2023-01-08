@@ -7,7 +7,7 @@ public class Button : Interactable
 {
     [SerializeField] private UnityEvent action;
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
         action?.Invoke();
     }

@@ -9,8 +9,6 @@ public class PlayerHands : MonoBehaviour
 {
     public Holdable Holding { get; private set; }
 
-    [SerializeField] private Transform holdingSocket;
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) DropHeld();
@@ -24,7 +22,7 @@ public class PlayerHands : MonoBehaviour
         holdable.RigidBody.isKinematic = true;
 
         // Attach the holdable to the socket
-        holdable.AttachToSocket(holdingSocket);
+        holdable.AttachToSocket(transform);
 
         Holding = holdable;
     }

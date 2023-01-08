@@ -10,13 +10,13 @@ public class SpaceSuitSocket : Interactable
         if (suit != null) Attach(suit);
     }
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
-        if (interactor.Body.IsWearingSpaceSuit)
+        if (interactor.IsWearingSpaceSuit)
         {
-            var spaceSuit = interactor.Body.SpaceSuit;
+            var spaceSuit = interactor.SpaceSuit;
 
-            interactor.Body.TakeOffSpaceSuit();
+            interactor.TakeOffSpaceSuit();
             Attach(spaceSuit);
         }
     }
