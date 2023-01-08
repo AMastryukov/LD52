@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerHands))]
 public class PlayerInteractor : MonoBehaviour
 {
     public Interactable LookingAt { get; private set; }

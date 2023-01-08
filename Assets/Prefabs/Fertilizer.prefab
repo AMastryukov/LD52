@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f586ef770b03c41b250cefef5b3727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posOffset: {x: 0, y: -0.15, z: 0.15}
-  rotOffset: {x: -90, y: -100, z: 125}
+  posOffset: {x: 0.115, y: -0.5, z: -0.1}
+  rotOffset: {x: 0, y: 35, z: 15}
 --- !u!1 &2418129465570230274
 GameObject:
   m_ObjectHideFlags: 0
