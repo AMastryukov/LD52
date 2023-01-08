@@ -17,6 +17,13 @@ public class SpaceSuit : Interactable
 
     public override void Interact(PlayerInteractor interactor)
     {
+        // Edge case where the player is holding an oxygen tank and wants to attach it but misses the socket collider
+        if (interactor.Hands.Holding is OxygenTank tank && OxygenTank == null)
+        {
+            _oxygenTankSocket.Interact(interactor);
+            return;
+        }
+
         interactor.Body.PutOnSpaceSuit(this);
         OnTaken?.Invoke();
     }

@@ -14,7 +14,7 @@ public class ValueControl : MonoBehaviour
 
     private void Awake()
     {
-        Current = defaultValue;
+        Current = Mathf.Clamp(defaultValue, min, max);
     }
 
     public void Increase()
