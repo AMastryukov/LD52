@@ -1,8 +1,14 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public static Action OnOpenDatapad;
+    public static Action OnCloseDatapad;
+
+    public enum State { Movement, Sleep, Datapad, Computer }
+
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float crouchSpeed = 1f;
 
@@ -11,11 +17,12 @@ public class PlayerController : MonoBehaviour
     private Transform _camera;
     private CharacterController _controller;
 
+    // Movement Inputs
     private Vector2 _lookInput;
     private Vector2 _moveInput;
-
     private bool _isCrouching;
-    private bool _isHijacked;
+
+    private State _currentState = State.Movement;
 
     private void Awake()
     {
@@ -27,12 +34,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_isHijacked) return;
-
         GetInput();
+
+        if (_currentState != State.Movement) return;
 
         Look();
         Move();
+        Interact();
 
         Crouch();
     }
@@ -43,6 +51,13 @@ public class PlayerController : MonoBehaviour
         _moveInput = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
 
         _isCrouching = Input.GetKey(KeyCode.LeftControl);
+
+        // Datapad input
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (_currentState == State.Movement) TryOpenDatapad();
+            else if (_currentState == State.Datapad) CloseDataPad();
+        }
     }
 
     private void Crouch()
@@ -74,29 +89,74 @@ public class PlayerController : MonoBehaviour
         _controller.Move(moveSpeed * Time.deltaTime * movement);
     }
 
-    public void HijackCamera(Transform transform, bool showCursor = true)
+    private void Interact()
     {
-        // Move camera to new position & rotation
-        _camera.position = transform.position;
-        _camera.rotation = transform.rotation;
-
-        _isHijacked = true;
-        _interactor.enabled = false;
-
-        if (showCursor) Cursor.lockState = CursorLockMode.Confined;
+        // Interaction input
+        _interactor.CastLookingRay();
+        if (Input.GetKeyDown(KeyCode.E)) _interactor.CastInteractionRay();
     }
 
-    public void ResetCamera()
+    #region Control State Management
+    public bool TryUseComputer(Transform viewPosition)
     {
+        if (_currentState != State.Movement) return false;
+        _currentState = State.Computer;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        // Move camera to new position & rotation
+        _camera.position = viewPosition.position;
+        _camera.rotation = viewPosition.rotation;
+
+        return true;
+    }
+
+    public void StopUsingComputer()
+    {
+        if (_currentState != State.Computer) return;
+        _currentState = State.Movement;
+        Cursor.lockState = CursorLockMode.Locked;
+
         // Reset camera position & rotation
         _camera.localPosition = Vector3.zero;
         _camera.localRotation = Quaternion.identity;
+    }
 
-        _isHijacked = false;
-        _interactor.enabled = true;
+    public bool TryOpenDatapad()
+    {
+        if (_currentState != State.Movement) return false;
+        _currentState = State.Datapad;
+        Cursor.lockState = CursorLockMode.Confined;
 
+        OnOpenDatapad?.Invoke();
+
+        return true;
+    }
+
+    public void CloseDataPad()
+    {
+        if (_currentState != State.Datapad) return;
+        _currentState = State.Movement;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        OnCloseDatapad?.Invoke();
+    }
+
+    public bool TrySleep()
+    {
+        if (_currentState != State.Movement) return false;
+        _currentState = State.Sleep;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        return true;
+    }
+
+    public void WakeUp()
+    {
+        if (_currentState != State.Sleep) return;
+        _currentState = State.Movement;
         Cursor.lockState = CursorLockMode.Locked;
     }
+    #endregion
 
     #region Pitch Clamper
     private static float minPitch = 85f;

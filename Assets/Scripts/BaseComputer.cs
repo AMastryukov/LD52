@@ -70,15 +70,15 @@ public class BaseComputer : Interactable
     private void Focus(Player player)
     {
         _controller = player.GetComponent<PlayerController>();
-        _controller.HijackCamera(viewPosition);
-        _isFocused = true;
+        if (_controller.TryUseComputer(viewPosition)) _isFocused = true;
     }
 
     private void Unfocus()
     {
-        _controller.ResetCamera();
+        _controller.StopUsingComputer();
         _isFocused = false;
 
+        // FIX: Unfocuses the input text so it stops taking input from the keyboard
         EventSystem.current.SetSelectedGameObject(null);
     }
 }

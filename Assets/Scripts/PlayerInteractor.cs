@@ -18,15 +18,7 @@ public class PlayerInteractor : MonoBehaviour
 
         // Ignore Player layer
         _mask = ~LayerMask.GetMask("Player");
-
         Player = GetComponentInParent<Player>();
-    }
-
-    private void Update()
-    {
-        CastLookingRay();
-
-        if (Input.GetKeyDown(KeyCode.E)) CastInteractionRay();
     }
 
     #region Raycasts
@@ -51,7 +43,7 @@ public class PlayerInteractor : MonoBehaviour
     /// Cast the interaction ray and interact with the first interactable that is hit.
     /// The logic is performed on the server
     /// </summary>
-    private void CastInteractionRay()
+    public void CastInteractionRay()
     {
         if (Physics.Raycast(transform.position, transform.forward, out _hit, interactionDistance, _mask))
         {
