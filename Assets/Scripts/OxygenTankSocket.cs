@@ -10,28 +10,33 @@ public class OxygenTankSocket : Interactable
     private void Start()
     {
         // Ensure the tank is attached if it starts off that way
-        if (Tank != null) Attach(Tank);
+        if (tank != null) Attach(tank);
     }
 
-    public override void Interact(PlayerInteractor interactor)
+    public override void Interact(Player interactor)
     {
-        if (interactor.Hands.Holding is OxygenTank tank) Attach(tank);
+        if (interactor.Hands.Holding is OxygenTank tank)
+        {
+            interactor.Hands.DropHeld();
+            Attach(tank);
+        }
     }
 
     private void Attach(OxygenTank newTank)
     {
-        // If a tank is already attached, detach it
-        if (Tank != null) { Detach(); }
+        if (tank != null && tank != newTank) { return; }
 
         newTank.AttachToSocket(transform);
         tank = newTank;
+
+        tank.OnTaken += Detach;
     }
 
     private void Detach()
     {
-        if (Tank == null) return;
+        if (tank == null) return;
 
-        Tank.DetachFromSocket();
+        tank.OnTaken -= Detach;
         tank = null;
     }
 }

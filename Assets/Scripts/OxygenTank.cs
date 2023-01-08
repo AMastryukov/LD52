@@ -6,6 +6,8 @@ using UnityEngine;
 public class OxygenTank : Holdable
 {
     public float Amount => _oxygen.Current;
+    public bool IsFull => Amount == _oxygen.max;
+
     private ValueControl _oxygen;
 
     protected override void Awake()
