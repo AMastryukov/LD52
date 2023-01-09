@@ -37,12 +37,13 @@ public class Player : MonoBehaviour
         {
             if (IsWearingSpaceSuit)
             {
-                SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
-
                 if (SpaceSuit.OxygenTank == null || SpaceSuit.OxygenTank.Amount == 0f)
                 {
                     Die("Asphyxiation due to lack of oxygen");
+                    return;
                 }
+
+                SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
             }
             else
             {
