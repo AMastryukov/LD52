@@ -30,9 +30,14 @@ public class BaseComputer : Interactable
     private PlayerController _controller;
     private bool _isFocused = false;
 
-    private void Update()
+    private void Awake()
     {
-        if (_isFocused && Input.GetKeyDown(KeyCode.Tab)) Unfocus();
+        PlayerController.OnStopUsingComputer += Unfocus;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerController.OnStopUsingComputer -= Unfocus;
     }
 
     // Call this in GameManager every day the player wakes up
@@ -55,7 +60,7 @@ public class BaseComputer : Interactable
 
         // Set the broadcast message from the input field
         BroadcastText = messageInputField.text;
-        postBroadcastText.text = $"Broadcasting Message:\n<size=16>{BroadcastText}</size>";
+        postBroadcastText.text = $"<b>Broadcasting:</b> {BroadcastText}...";
 
         broadcastControlPanel.SetActive(false);
         postBroadcastControlPanel.SetActive(true);
@@ -63,11 +68,10 @@ public class BaseComputer : Interactable
 
     public override void Interact(Player interactor)
     {
-        if (_isFocused) Unfocus();
-        else Focus(interactor);
+        if (!_isFocused) UseComputer(interactor);
     }
 
-    private void Focus(Player player)
+    private void UseComputer(Player player)
     {
         _controller = player.GetComponent<PlayerController>();
         if (_controller.TryUseComputer(viewPosition)) _isFocused = true;
@@ -75,7 +79,6 @@ public class BaseComputer : Interactable
 
     private void Unfocus()
     {
-        _controller.StopUsingComputer();
         _isFocused = false;
 
         // FIX: Unfocuses the input text so it stops taking input from the keyboard

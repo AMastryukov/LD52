@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static Action OnOpenDatapad;
     public static Action OnCloseDatapad;
+    public static Action OnStopUsingComputer;
 
     public enum State { Movement, Sleep, Datapad, Computer }
 
@@ -52,11 +53,12 @@ public class PlayerController : MonoBehaviour
 
         _isCrouching = Input.GetKey(KeyCode.LeftControl);
 
-        // Datapad input
+        // Datapad & Computer input
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (_currentState == State.Movement) TryOpenDatapad();
             else if (_currentState == State.Datapad) CloseDataPad();
+            else if (_currentState == State.Computer) StopUsingComputer();
         }
     }
 
@@ -119,6 +121,8 @@ public class PlayerController : MonoBehaviour
         // Reset camera position & rotation
         _camera.localPosition = Vector3.zero;
         _camera.localRotation = Quaternion.identity;
+
+        OnStopUsingComputer?.Invoke();
     }
 
     public bool TryOpenDatapad()

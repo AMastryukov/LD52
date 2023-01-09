@@ -33,16 +33,12 @@ public class Player : MonoBehaviour
 
         CheckForAir();
 
-        if (IsWearingSpaceSuit && SpaceSuit.OxygenTank != null)
-        {
-            SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
-            // Debug.Log($"Current Oxygen Level: {SpaceSuit.OxygenTank.Amount}");
-        }
-
         if (IsInSpace)
         {
             if (IsWearingSpaceSuit)
             {
+                SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
+
                 if (SpaceSuit.OxygenTank == null || SpaceSuit.OxygenTank.Amount == 0f)
                 {
                     Die("Asphyxiation due to lack of oxygen");
@@ -50,7 +46,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                Die("Asphyxiation & decompression due to exposure to the vacuum of space");
+                Die("Decompression due to exposure to the vacuum of space");
             }
         }
     }
@@ -79,8 +75,11 @@ public class Player : MonoBehaviour
         Debug.Log($"YOU ARE DEAD: {cause}");
     }
 
+    private Collider[] _airVolumes = new Collider[1];
+
     private void CheckForAir()
     {
-        IsInSpace = !Physics.CheckBox(suitHelmet.transform.position, Vector3.one * 0.1f, Quaternion.identity, _airMask, QueryTriggerInteraction.Collide);
+        Physics.OverlapBoxNonAlloc(suitHelmet.transform.position, Vector3.one * 0.1f, _airVolumes, Quaternion.identity, _airMask, QueryTriggerInteraction.Collide);
+        IsInSpace = _airVolumes[0] == null || !_airVolumes[0].GetComponent<AirVolume>().HasAir;
     }
 }

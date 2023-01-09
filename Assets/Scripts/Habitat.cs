@@ -6,4 +6,5 @@ public class Habitat : MonoBehaviour
 {
     [SerializeField] private PowerState powerState;
     [SerializeField] private HabitatLights lights;
+    [SerializeField] private Airlock airlock;
 }
