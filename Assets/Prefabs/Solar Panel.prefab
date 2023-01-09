@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5303326288173857500}
   - component: {fileID: 5303326288173857499}
   - component: {fileID: 5303326288173857498}
-  - component: {fileID: 5303326288173857501}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5303326288173857501
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5303326288173857503}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1445429886155621308, guid: b7ae06adec9833840bc89007e1e79d48, type: 3}
 --- !u!1 &5303326288550880447
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +94,7 @@ GameObject:
   - component: {fileID: 5303326288550880444}
   - component: {fileID: 5303326288550880443}
   - component: {fileID: 5303326288550880442}
+  - component: {fileID: 40865085117452608}
   - component: {fileID: 5303326288550880445}
   - component: {fileID: 3317830970734556793}
   m_Layer: 0
@@ -183,8 +169,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5303326288550880445
-BoxCollider:
+--- !u!64 &40865085117452608
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -193,9 +179,23 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6801496783033904975, guid: 4c0b2856e567e9240882d9bf8673ae37, type: 3}
+--- !u!65 &5303326288550880445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303326288550880447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.4283953, y: 1.155356, z: 0.24885309}
+  m_Center: {x: 0.044211674, y: 0.01596996, z: 0.5904747}
 --- !u!114 &3317830970734556793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 5303326288642369381}
   - component: {fileID: 5303326288642369376}
   - component: {fileID: 5303326288642369379}
-  - component: {fileID: 5303326288642369378}
+  - component: {fileID: 7777130314517876213}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -294,8 +294,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5303326288642369378
-BoxCollider:
+--- !u!64 &7777130314517876213
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -304,9 +304,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7818754465201324589, guid: 4c0b2856e567e9240882d9bf8673ae37, type: 3}
 --- !u!1 &5303326289275850443
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5303326289275850440}
   - component: {fileID: 3808721088061757757}
+  - component: {fileID: 3327216609672101327}
   m_Layer: 0
   m_Name: Solar Panel
   m_TagString: Untagged
@@ -352,5 +354,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c31bcc3d87bc2554382c550b0d045116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3327216609672101327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303326289275850443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8b06613983dce549812bf1de5d747d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

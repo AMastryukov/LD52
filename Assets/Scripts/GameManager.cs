@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     [Header("Dust Storm")]
     [SerializeField] private ParticleSystem dustStorm;
 
+    [Header("Solar Flare")]
+    [SerializeField] private SolarPanelControl solarPanelControl;
+
     [Header("Ending")]
     [SerializeField] private Dispenser fertilizerDispenser;
     [SerializeField] private Voicenote voiceNote;
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SetDay(14, 21);
+        SetDay(0, 0);
     }
 
     private void SetDay(int previous, int current)
@@ -187,6 +190,8 @@ public class GameManager : MonoBehaviour
         habitatB.Power.Online = false;
         habitatC.Power.Online = false;
 
+        solarPanelControl.Enable();
+
         _computer.WarningText = "";
     }
 
@@ -207,10 +212,7 @@ public class GameManager : MonoBehaviour
         habitatC.Power.Online = false;
 
         // Disable power to solar panels
-        foreach (var panel in _solarArray)
-        {
-            panel.Power.Online = false;
-        }
+        solarPanelControl.Disable();
 
         // Tell base computer to show solar flare warning
         _computer.WarningText = "WARNING: SOLAR FLARE DETECTED";
