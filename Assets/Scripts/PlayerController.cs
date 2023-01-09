@@ -1,34 +1,47 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    public static Action OnOpenDatapad;
+    public static Action OnCloseDatapad;
+    public static Action OnStopUsingComputer;
+
+    public enum State { Movement, Sleep, Datapad, Computer }
+
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float crouchSpeed = 1f;
 
     private Transform _view;
+    private PlayerInteractor _interactor;
+    private Transform _camera;
     private CharacterController _controller;
 
+    // Movement Inputs
     private Vector2 _lookInput;
     private Vector2 _moveInput;
-
     private bool _isCrouching;
+
+    private State _currentState = State.Movement;
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        _view = GetComponentInChildren<Camera>().transform;
+        _view = GetComponentInChildren<PlayerInteractor>().transform;
+        _interactor = _view.GetComponent<PlayerInteractor>();
         _controller = GetComponent<CharacterController>();
+        _camera = _view.GetComponentInChildren<Camera>().transform;
     }
 
     private void Update()
     {
         GetInput();
 
+        if (_currentState != State.Movement) return;
+
         Look();
         Move();
+        Interact();
 
         Crouch();
     }
@@ -39,6 +52,14 @@ public class PlayerController : MonoBehaviour
         _moveInput = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
 
         _isCrouching = Input.GetKey(KeyCode.LeftControl);
+
+        // Datapad & Computer input
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (_currentState == State.Movement) TryOpenDatapad();
+            else if (_currentState == State.Datapad) CloseDataPad();
+            else if (_currentState == State.Computer) StopUsingComputer();
+        }
     }
 
     private void Crouch()
@@ -69,6 +90,77 @@ public class PlayerController : MonoBehaviour
         var moveSpeed = _isCrouching ? crouchSpeed : walkSpeed;
         _controller.Move(moveSpeed * Time.deltaTime * movement);
     }
+
+    private void Interact()
+    {
+        // Interaction input
+        _interactor.CastLookingRay();
+        if (Input.GetKeyDown(KeyCode.E)) _interactor.CastInteractionRay();
+    }
+
+    #region Control State Management
+    public bool TryUseComputer(Transform viewPosition)
+    {
+        if (_currentState != State.Movement) return false;
+        _currentState = State.Computer;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        // Move camera to new position & rotation
+        _camera.position = viewPosition.position;
+        _camera.rotation = viewPosition.rotation;
+
+        return true;
+    }
+
+    public void StopUsingComputer()
+    {
+        if (_currentState != State.Computer) return;
+        _currentState = State.Movement;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        // Reset camera position & rotation
+        _camera.localPosition = Vector3.zero;
+        _camera.localRotation = Quaternion.identity;
+
+        OnStopUsingComputer?.Invoke();
+    }
+
+    public bool TryOpenDatapad()
+    {
+        if (_currentState != State.Movement) return false;
+        _currentState = State.Datapad;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        OnOpenDatapad?.Invoke();
+
+        return true;
+    }
+
+    public void CloseDataPad()
+    {
+        if (_currentState != State.Datapad) return;
+        _currentState = State.Movement;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        OnCloseDatapad?.Invoke();
+    }
+
+    public bool TrySleep()
+    {
+        if (_currentState != State.Movement) return false;
+        _currentState = State.Sleep;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        return true;
+    }
+
+    public void WakeUp()
+    {
+        if (_currentState != State.Sleep) return;
+        _currentState = State.Movement;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    #endregion
 
     #region Pitch Clamper
     private static float minPitch = 85f;

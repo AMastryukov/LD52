@@ -1,10 +1,9 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerHands))]
 public class PlayerInteractor : MonoBehaviour
 {
     public Interactable LookingAt { get; private set; }
-    public PlayerHands Hands { get; private set; }
+    public Player Player { get; private set; }
 
     [Header("Settings")]
     [SerializeField] private float interactionDistance;
@@ -14,19 +13,13 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Awake()
     {
+        // Lock the cursor (UI interactions are done separately)
+        Cursor.lockState = CursorLockMode.Locked;
+
         // Ignore Player layer
-        _mask = ~LayerMask.GetMask("Player");
-
-        Hands = GetComponent<PlayerHands>();
+        _mask = ~LayerMask.GetMask("Player", "Air");
+        Player = GetComponentInParent<Player>();
     }
-
-    private void Update()
-    {
-        CastLookingRay();
-
-        if (Input.GetKeyDown(KeyCode.E)) CastInteractionRay();
-    }
-
 
     #region Raycasts
     /// <summary>
@@ -50,12 +43,12 @@ public class PlayerInteractor : MonoBehaviour
     /// Cast the interaction ray and interact with the first interactable that is hit.
     /// The logic is performed on the server
     /// </summary>
-    private void CastInteractionRay()
+    public void CastInteractionRay()
     {
         if (Physics.Raycast(transform.position, transform.forward, out _hit, interactionDistance, _mask))
         {
             var interactable = _hit.collider.GetComponent<Interactable>();
-            if (interactable != null) interactable.Interact(this);
+            if (interactable != null) interactable.Interact(Player);
 
             Debug.DrawLine(transform.position, _hit.point, Color.green);
         }
