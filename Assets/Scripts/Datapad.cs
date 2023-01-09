@@ -1,16 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Datapad : MonoBehaviour
 {
     [SerializeField] private DatapadEntry entryPrefab;
     [SerializeField] private Transform datapadEntryContent;
 
+    [SerializeField] private TextMeshProUGUI dayText;
+    [SerializeField] private TextMeshProUGUI foodText;
+
+    private GameManager _gameManager;
     private Canvas _canvas;
     private List<DatapadEntry> _entries = new();
 
     private void Awake()
     {
+        _gameManager = FindObjectOfType<GameManager>();
         _canvas = GetComponent<Canvas>();
 
         PlayerController.OnOpenDatapad += Open;
@@ -28,11 +34,18 @@ public class Datapad : MonoBehaviour
     private void Open()
     {
         _canvas.enabled = true;
+        UpdateUI();
     }
 
     private void Close()
     {
         _canvas.enabled = false;
+    }
+
+    private void UpdateUI()
+    {
+        dayText.text = $"Day {_gameManager.Day}";
+        foodText.text = $"Food Reserves: {_gameManager.FoodReserves}";
     }
 
     private void AddEntry(VoicenoteData data)

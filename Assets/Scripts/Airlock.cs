@@ -10,6 +10,12 @@ public class Airlock : MonoBehaviour
     [SerializeField] private HabitatLights lights;
     [SerializeField] private Door outsideDoor;
     [SerializeField] private Door insideDoor;
+    [SerializeField] private AirlockControl airlockUI;
+
+    private void Start()
+    {
+        airlockUI.UpdateUI(insideDoor.IsLocked);
+    }
 
     public void ActivateOutsideDoor()
     {
@@ -17,7 +23,7 @@ public class Airlock : MonoBehaviour
         if (!outsideDoor.IsOpen && insideDoor.IsOpen) return;
         if (!outsideDoor.IsOpen && airVolume.HasAir) return;
 
-        Debug.Log($"Outside door closed: {!outsideDoor.IsOpen}, Inside door open: {insideDoor.IsOpen}");
+        //Debug.Log($"Outside door closed: {!outsideDoor.IsOpen}, Inside door open: {insideDoor.IsOpen}");
 
         outsideDoor.Activate();
     }
@@ -28,7 +34,7 @@ public class Airlock : MonoBehaviour
         if (!insideDoor.IsOpen && outsideDoor.IsOpen) return;
         if (!insideDoor.IsOpen && !airVolume.HasAir) return;
 
-        Debug.Log($"Inside door closed: {!insideDoor.IsOpen}, Outside door open: {outsideDoor.IsOpen}");
+        //Debug.Log($"Inside door closed: {!insideDoor.IsOpen}, Outside door open: {outsideDoor.IsOpen}");
 
         insideDoor.Activate();
     }
@@ -40,6 +46,8 @@ public class Airlock : MonoBehaviour
         airVolume.Toggle();
 
         Debug.Log(airVolume.HasAir ? "Added Air to airlock" : "Removed air from airlock");
+
+        airlockUI.UpdateUI(airVolume.HasAir);
     }
 
     public void Lock()

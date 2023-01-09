@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Dispenser : MonoBehaviour
 {
+    public int Remaining { get; set; }
+
     [SerializeField] private GameObject prefab;
     [SerializeField] private Transform dispensePoint;
+    [SerializeField] private int amount;
 
-    private bool _onCooldown;
+    private void Start()
+    {
+        Remaining = amount;
+    }
 
     public void Dispense()
     {
@@ -17,14 +23,13 @@ public class Dispenser : MonoBehaviour
             return;
         }
 
-        if (_onCooldown) return;
+        if (Remaining == 0)
+        {
+            Debug.Log("Dispenser is empty");
+            return;
+        }
 
         Instantiate(prefab, dispensePoint);
-        _onCooldown = true;
-    }
-
-    public void ResetDispenser()
-    {
-        _onCooldown = false;
+        Remaining--;
     }
 }

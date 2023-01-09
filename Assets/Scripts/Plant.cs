@@ -7,6 +7,7 @@ public class Plant : Holdable
     public Type PlantType => plantType;
     public bool IsGrown { get; private set; }
     public bool IsDead { get; private set; }
+    public bool IsPlanted { get; set; }
 
     [Header("References")]
     [SerializeField] private GameObject aliveMesh;
@@ -17,23 +18,47 @@ public class Plant : Holdable
     [SerializeField] private float optimalTemperature;
     [SerializeField] private int optimalPressure;
 
-    public void TryGrow(float temperature, int pressure)
+    public void TryGrow(float temperature, float pressure, bool hasLight, bool hasPower)
     {
-        var tempDiff = Mathf.Abs(optimalTemperature - temperature);
-        var presDiff = Mathf.Abs(optimalPressure - pressure);
+        if (IsDead) return;
 
         // Check if the conditions were right for it to grow
-        IsDead = (tempDiff > 1f || presDiff > 4);
-        if (!IsDead) IsGrown = true;
+        if (optimalTemperature != temperature || optimalPressure != pressure || !hasLight || !hasPower) Kill();
+        else ForceGrow();
+    }
+
+    public override void Interact(Player interactor)
+    {
+        if (IsDead)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        base.Interact(interactor);
+    }
+
+    public void ForceGrow()
+    {
+        IsDead = false;
+        IsGrown = true;
 
         // Toggle alive/dead meshes
-        aliveMesh.SetActive(!IsDead);
-        deadMesh.SetActive(IsDead);
+        aliveMesh.SetActive(true);
+        deadMesh.SetActive(false);
 
-        // Increase the size of the grown mesh since it's grown
-        if (IsGrown)
-        {
-            aliveMesh.transform.localScale = Vector3.one * 3f;
-        }
+        aliveMesh.transform.localScale = Vector3.one * 5f;
+    }
+
+    public void Kill()
+    {
+        IsDead = true;
+        IsGrown = false;
+
+        // Toggle alive/dead meshes
+        aliveMesh.SetActive(false);
+        deadMesh.SetActive(true);
+
+        deadMesh.transform.localScale = Vector3.one * 0.5f;
     }
 }

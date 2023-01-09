@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Planter : Interactable
 {
+    public static Action<bool> OnPlantHarvested;
+
     private bool _isFertilized;
     public bool IsFertilized
     {
@@ -15,7 +18,7 @@ public class Planter : Interactable
         }
     }
     public Plant CurrentPlant { get; private set; }
-    public bool IsReady { get; private set; }
+    public bool IsHarvestable { get; private set; }
 
     [Header("References")]
     [SerializeField] private GameObject fertilizerMesh;
@@ -48,13 +51,17 @@ public class Planter : Interactable
         }
 
         // If the plant is ready, harvest it
-        if (IsReady && CurrentPlant != null)
+        if (IsHarvestable && CurrentPlant != null)
         {
-            interactor.Hands.PickUp(CurrentPlant);
             Harvest();
 
             return;
         }
+    }
+
+    public void UpdatePlanterState()
+    {
+        IsHarvestable = CurrentPlant != null && (CurrentPlant.IsGrown || CurrentPlant.IsDead);
     }
 
     private void Fertilize()
@@ -70,13 +77,18 @@ public class Planter : Interactable
 
         CurrentPlant = plant;
         CurrentPlant.AttachToSocket(plantSocket);
+        CurrentPlant.IsPlanted = true;
     }
 
     private void Harvest()
     {
         Debug.Log($"Harvested {CurrentPlant.PlantType}");
 
-        IsReady = false;
+        OnPlantHarvested?.Invoke(!CurrentPlant.IsDead);
+
+        Destroy(CurrentPlant.gameObject);
+
+        IsHarvestable = false;
         IsFertilized = false;
         CurrentPlant = null;
     }

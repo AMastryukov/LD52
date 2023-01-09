@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1919394759340819569}
   - component: {fileID: 1919394759340819568}
   m_Layer: 0
-  m_Name: Terrain_0_0_4c762046-d388-4917-9323-b62ccccaaaa6
+  m_Name: Planet Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

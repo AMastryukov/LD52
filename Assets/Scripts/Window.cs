@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(DustTarget))]
-public class Window : MonoBehaviour
+public class Window : Interactable
 {
     public DustTarget DustTarget => _dust;
     public bool IsClosed { get; private set; }
+    public bool IsDusty => _dust.IsDusty;
 
     [SerializeField] private GameObject shutters;
 
@@ -17,13 +16,26 @@ public class Window : MonoBehaviour
         _dust = GetComponent<DustTarget>();
     }
 
-    public void Open()
+    private void Start()
     {
-        IsClosed = false;
+        OpenShutters();
     }
 
-    public void Close()
+    public void OpenShutters()
+    {
+        IsClosed = false;
+        shutters.SetActive(false);
+    }
+
+    public void CloseShutters()
     {
         IsClosed = true;
+        shutters.SetActive(true);
+    }
+
+    public override void Interact(Player interactor)
+    {
+        if (IsClosed) OpenShutters();
+        else CloseShutters();
     }
 }

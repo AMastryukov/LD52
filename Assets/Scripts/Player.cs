@@ -12,11 +12,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject suitHelmet;
 
     private LayerMask _airMask;
+    private PlayerController _controller;
 
     private void Awake()
     {
         Hands = GetComponentInChildren<PlayerHands>();
         _airMask = LayerMask.GetMask("Air");
+
+        _controller = GetComponent<PlayerController>();
     }
 
     private void Start()
@@ -69,10 +72,25 @@ public class Player : MonoBehaviour
         suitHelmet.SetActive(false);
     }
 
+    public void GoToSleep()
+    {
+        _controller.TrySleep();
+    }
+
+    public void WakeUp()
+    {
+        _controller.WakeUp();
+    }
+
+    public void Kill(string reason)
+    {
+        Die(reason);
+    }
+
     private void Die(string cause)
     {
         IsDead = true;
-        Debug.Log($"YOU ARE DEAD: {cause}");
+        Debug.Log($"[YOU ARE DEAD]: {cause}");
     }
 
     private Collider[] _airVolumes = new Collider[1];

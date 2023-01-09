@@ -31,7 +31,7 @@ public class SleepOverlay : MonoBehaviour
     private IEnumerator OverlayScreenCoroutine()
     {
         nextDayOverlay.enabled = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
         nextDayOverlay.enabled = false;
     }
 

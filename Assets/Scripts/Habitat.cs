@@ -7,6 +7,8 @@ public class Habitat : MonoBehaviour
     public PowerState Power => power;
     public Airlock Airlock => airlock;
 
+    public bool NoPower { get; set; }
+
     [SerializeField] private PowerState power;
     [SerializeField] private HabitatLights lights;
     [SerializeField] private Airlock airlock;

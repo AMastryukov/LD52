@@ -12,6 +12,8 @@ public class TimelineManager : MonoBehaviour
 
     private void AdvanceDay()
     {
+        if (_currentIndex == _days.Length - 1) return;
+
         _currentIndex++;
         OnDayAdvanced?.Invoke(_days[_currentIndex - 1], CurrentDay);
     }
