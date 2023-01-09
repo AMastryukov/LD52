@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3f770b603e2d8448c0fc0a59de5476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygenTankSocket: {fileID: 8003372740486108191}
 --- !u!1 &8003372741224414494
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +560,7 @@ PrefabInstance:
     - target: {fileID: 488411952343472620, guid: 3d1cf2671a601fa4d969f04f2240f3a3,
         type: 3}
       propertyPath: defaultValue
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 488411952343472622, guid: 3d1cf2671a601fa4d969f04f2240f3a3,
         type: 3}

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public bool IsLocked => isLocked;
+    public bool IsOpen => _isOpen;
 
     [SerializeField] private bool isLocked;
     [SerializeField] private GameObject door;
@@ -16,24 +17,22 @@ public class Door : MonoBehaviour
 
     public void Activate()
     {
-        if (IsLocked)
-        {
-            Debug.Log("Door is locked");
-            return;
-        }
-
         if (_isOpen) Close();
         else Open();
     }
 
     private void Open()
     {
+        if (IsLocked) return;
+
         door.SetActive(false);
         _isOpen = true;
     }
 
     private void Close()
     {
+        if (IsLocked) return;
+
         door.SetActive(true);
         _isOpen = false;
     }

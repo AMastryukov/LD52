@@ -7,7 +7,7 @@ public class OxygenTankSocket : Interactable
     public OxygenTank Tank => tank;
     [SerializeField] private OxygenTank tank;
 
-    private void Start()
+    private void Awake()
     {
         // Ensure the tank is attached if it starts off that way
         if (tank != null) Attach(tank);

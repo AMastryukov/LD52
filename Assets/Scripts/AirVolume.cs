@@ -5,13 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class AirVolume : MonoBehaviour
 {
-    public bool HasAir { get; private set; } = true;
+    public bool HasAir => hasAir;
 
-    public void AddAir() => HasAir = true;
-    public void RemoveAir() => HasAir = false;
+    public void AddAir() => hasAir = true;
+    public void RemoveAir() => hasAir = false;
+
+    [SerializeField] private bool hasAir;
+
+    public void Toggle()
+    {
+        if (HasAir) RemoveAir();
+        else AddAir();
+    }
 
     private void OnDrawGizmos()
     {
+        if (!HasAir) return;
+
         var collider = GetComponent<BoxCollider>();
 
         Gizmos.color = new Color(1f, 1f, 1f, 0.2f);

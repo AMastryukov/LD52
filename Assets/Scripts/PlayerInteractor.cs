@@ -17,7 +17,7 @@ public class PlayerInteractor : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         // Ignore Player layer
-        _mask = ~LayerMask.GetMask("Player");
+        _mask = ~LayerMask.GetMask("Player", "Air");
         Player = GetComponentInParent<Player>();
     }
 

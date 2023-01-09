@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
         if (IsWearingSpaceSuit && SpaceSuit.OxygenTank != null)
         {
             SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
-            Debug.Log($"Current Oxygen Level: {SpaceSuit.OxygenTank.Amount}");
+            // Debug.Log($"Current Oxygen Level: {SpaceSuit.OxygenTank.Amount}");
         }
 
         if (IsInSpace)
