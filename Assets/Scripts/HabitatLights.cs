@@ -2,30 +2,30 @@ using UnityEngine;
 
 public class HabitatLights : MonoBehaviour
 {
-    [SerializeField] private Light[] regularLights;
+    [SerializeField] private Light[] lights;
     [SerializeField] private Light[] backupLights;
 
-    public void TurnOnRegularLights()
+    public void TurnOn()
     {
         foreach (var light in backupLights)
         {
             light.enabled = false;
         }
 
-        foreach (var light in regularLights)
+        foreach (var light in lights)
         {
             light.enabled = true;
         }
     }
 
-    public void TurnOnBackupLights()
+    public void TurnOff()
     {
         foreach (var light in backupLights)
         {
             light.enabled = true;
         }
 
-        foreach (var light in regularLights)
+        foreach (var light in lights)
         {
             light.enabled = false;
         }

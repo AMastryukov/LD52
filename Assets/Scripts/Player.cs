@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,6 +7,7 @@ public class Player : MonoBehaviour
     public bool IsWearingSpaceSuit => SpaceSuit != null;
     public bool IsInSpace { get; private set; }
     public bool IsDead { get; private set; }
+    public int Hunger { get; set; } = 0;
 
     [SerializeField] private GameObject suitHelmet;
 

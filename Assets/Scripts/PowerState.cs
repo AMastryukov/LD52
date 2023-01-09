@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Represents the power state of a habitat or whatever
@@ -6,7 +7,28 @@ using UnityEngine;
 /// </summary>
 public class PowerState : MonoBehaviour
 {
-    public bool Online { get; set; }
-    public bool IsLocked { get; set; } = true; // Can it be toggled on/off?
-    public string Status { get; set; } // "Days until online: 20" or "Online" something like that
+    public Action OnStateChanged;
+
+    private bool _isOnline;
+    public bool Online
+    {
+        get => _isOnline;
+        set
+        {
+            _isOnline = value;
+            OnStateChanged?.Invoke();
+        }
+    }
+
+
+    private bool _isLocked;
+    public bool IsLocked
+    {
+        get => _isLocked;
+        set
+        {
+            _isLocked = value;
+            OnStateChanged?.Invoke();
+        }
+    }
 }

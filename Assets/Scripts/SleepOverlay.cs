@@ -4,10 +4,12 @@ using TMPro;
 
 public class SleepOverlay : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI dayText;
-    [SerializeField] private TextMeshProUGUI daysUntilHarvestText;
+    [SerializeField] private TextMeshProUGUI mainText;
+    [SerializeField] private TextMeshProUGUI subText;
 
     [SerializeField] private Canvas nextDayOverlay;
+
+    // TODO: map days to text entries
 
     private void Awake()
     {
@@ -18,12 +20,12 @@ public class SleepOverlay : MonoBehaviour
     {
         TimelineManager.OnDayAdvanced -= ShowOverlay;
     }
-    
-    private void ShowOverlay(int day, string text)
+
+    private void ShowOverlay(int from, int to)
     {
         StartCoroutine(OverlayScreenCoroutine());
-        dayText.text = "Day " + day;
-        daysUntilHarvestText.text = "Days until harvest text: " + text;
+        mainText.text = "Day " + to;
+        subText.text = $"({to - from} day(s) later)";
     }
 
     private IEnumerator OverlayScreenCoroutine()

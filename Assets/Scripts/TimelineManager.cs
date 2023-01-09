@@ -3,18 +3,17 @@ using System;
 
 public class TimelineManager : MonoBehaviour
 {
-    public static Action <int, string> OnDayAdvanced;
+    public static Action<int, int> OnDayAdvanced;
 
-    private int[] gameDays = { 0, 1, 7, 14, 21, 24, 31 };
-    private int _currentDayIndex = 0;
+    private int[] _days = { 0, 1, 7, 14, 21, 24, 31 };
+    private int _currentIndex = 0;
 
-    public int CurrentDay => gameDays[_currentDayIndex];
+    public int CurrentDay => _days[_currentIndex];
 
     private void AdvanceDay()
     {
-        _currentDayIndex++;
-
-        OnDayAdvanced?.Invoke(CurrentDay,"");
+        _currentIndex++;
+        OnDayAdvanced?.Invoke(_days[_currentIndex - 1], CurrentDay);
     }
 
     private void Awake()

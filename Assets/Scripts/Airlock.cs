@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Airlock : MonoBehaviour
 {
+    public HabitatLights Lights => lights;
+
     [SerializeField] private AirVolume airVolume;
+    [SerializeField] private HabitatLights lights;
     [SerializeField] private Door outsideDoor;
     [SerializeField] private Door insideDoor;
 
@@ -37,5 +40,17 @@ public class Airlock : MonoBehaviour
         airVolume.Toggle();
 
         Debug.Log(airVolume.HasAir ? "Added Air to airlock" : "Removed air from airlock");
+    }
+
+    public void Lock()
+    {
+        outsideDoor.IsLocked = true;
+        insideDoor.IsLocked = true;
+    }
+
+    public void Unlock()
+    {
+        outsideDoor.IsLocked = false;
+        insideDoor.IsLocked = false;
     }
 }

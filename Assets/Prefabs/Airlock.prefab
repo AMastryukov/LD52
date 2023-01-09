@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airVolume: {fileID: 4361721551626833016}
+  lights: {fileID: 3297361059162050258}
   outsideDoor: {fileID: 7739471518102206156}
   insideDoor: {fileID: 7739471519631926832}
 --- !u!1 &3252621481165537332
@@ -1077,6 +1078,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7739471517976152205}
+  - component: {fileID: 3297361059162050258}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -1102,6 +1104,23 @@ Transform:
   m_Father: {fileID: 1935502286505569406}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3297361059162050258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7739471517976152206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d875c4693d0e0ae4e99351ec47fd7bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 7739471518030426628}
+  - {fileID: 7739471518829909323}
+  backupLights:
+  - {fileID: 7739471518133879922}
 --- !u!1 &7739471518030426631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3969863a44104c41bdf55486de72c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 0
   isOpen: 0
   door: {fileID: 3252621481165537332}
 --- !u!1 &7739471518133879933
@@ -1854,7 +1872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3969863a44104c41bdf55486de72c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 0
   isOpen: 0
   door: {fileID: 1884399154113511289}
 --- !u!1 &8549094936868731025

@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public bool IsLocked => isLocked;
+    public bool IsLocked { get; set; }
     public bool IsOpen => isOpen;
 
-    [SerializeField] private bool isLocked;
     [SerializeField] private bool isOpen;
     [SerializeField] private GameObject door;
 

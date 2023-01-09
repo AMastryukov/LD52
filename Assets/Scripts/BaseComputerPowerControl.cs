@@ -17,7 +17,7 @@ public class BaseComputerPowerControl : MonoBehaviour
 
     public void UpdateControl()
     {
-        statusText.text = powerState.Status;
+        // statusText.text = powerState.Status;
         button.image.color = powerState.Online ? onColor : offColor;
         buttonText.text = powerState.Online ? "ON" : "OFF";
     }
