@@ -3101,7 +3101,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8026891866271547464}
   m_LocalRotation: {x: 0.000000014901158, y: 1, z: -0.000000052154054, w: 0.000000089406946}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.001, y: 0.0010000002, z: 0.0010000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3114,8 +3114,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.0247, y: 0.0012}
-  m_SizeDelta: {x: 1554.9646, y: 645.0353}
+  m_AnchoredPosition: {x: -0.0049, y: 0.0041}
+  m_SizeDelta: {x: 1474.9099, y: 627.5724}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8026891866271547468
 Canvas:
@@ -3223,8 +3223,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.05}
+  m_Size: {x: 1.5267937, y: 0.61703604, z: 0.41561875}
+  m_Center: {x: -0.008468628, y: 0.00851801, z: 0.20780937}
 --- !u!114 &8026891866528802111
 MonoBehaviour:
   m_ObjectHideFlags: 0
