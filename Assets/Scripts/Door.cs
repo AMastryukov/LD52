@@ -1,37 +1,54 @@
 using UnityEngine;
+using System.Collections;
+using DG.Tweening;
 
+[RequireComponent(typeof(AudioSource))]
 public class Door : MonoBehaviour
 {
     public bool IsLocked { get; set; }
     public bool IsOpen => isOpen;
 
     [SerializeField] private bool isOpen;
-    [SerializeField] private GameObject door;
+    [SerializeField] private bool isSilent;
+    [SerializeField] private Transform door;
+    [SerializeField] private Transform openTransform;
+    [SerializeField] private Transform closeTransform;
 
-    private void Start()
+    private bool _isBusy;
+    private AudioSource _audioSource;
+
+    private void Awake()
     {
-        door.SetActive(!isOpen);
+        _audioSource = GetComponent<AudioSource>();
     }
 
-    public void Activate()
+    public IEnumerator OpenDoor()
     {
-        if (isOpen) Close();
-        else Open();
-    }
+        if (IsLocked || _isBusy || IsOpen) yield break;
 
-    private void Open()
-    {
-        if (IsLocked) return;
+        _isBusy = true;
 
-        door.SetActive(false);
+        if (!isSilent) _audioSource.Play();
+
+        door.transform.DOMove(openTransform.position, 2f);
+        yield return new WaitForSeconds(2f);
+
+        _isBusy = false;
         isOpen = true;
     }
 
-    private void Close()
+    public IEnumerator CloseDoor()
     {
-        if (IsLocked) return;
+        if (IsLocked || _isBusy || !IsOpen) yield break;
 
-        door.SetActive(true);
+        _isBusy = true;
+
+        if (!isSilent) _audioSource.Play();
+
+        door.transform.DOMove(closeTransform.position, 2f);
+        yield return new WaitForSeconds(2f);
+
+        _isBusy = false;
         isOpen = false;
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 8
+  m_EditorClassIdentifier: 
+  note: In case of dust storms, first - close the Habitat B windows. After the storm,
+    open them and clean the dust off the solar panels.
+  voiceClip: {fileID: 8300000, guid: dd2a5051e1b829a42bfb13bd93da70a7, type: 3}
+  subtitle: "<b>Kerry:</b> I hate dust storms. First, we have to prepare - go to
+    Habitat B windows and close them. Then, once the storm passes, go to the solar
+    array and wipe down every single panel. Oh, and if you don\u2019t? No power,
+    no light, and no food for you. *pause* Uhhh\u2026 Mitch is\u2026 staring at me
+    from the airlock right now. It\u2019s kind of creeping me out. Now he\u2019s
+    calling me over\u2026 (to Mitch) alright, alright, I\u2019ll be right there,
+    one sec, let me wrap this up\u2026\r"

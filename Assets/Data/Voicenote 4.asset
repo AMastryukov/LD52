@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 4
+  m_EditorClassIdentifier: 
+  note: 'The optimal temperatures for plants are - A: 46, B: 53, C: 58 degrees.'
+  voiceClip: {fileID: 8300000, guid: 10717684caa7df64fb7433adeb83ef70, type: 3}
+  subtitle: "<b>Mitch:</b> Oh man, the rotten fruit I got in my meal two days ago
+    has been tearing me up inside. Had a fever so bad last night I couldn\u2019t
+    move. Thankfully, the fever has mostly subsided but I still feel a bit under
+    the weather\u2026 Speaking of weather, yesterday's dust storm was pretty bad,
+    apparently. Seems to have damaged the heating sensor in Habitat B so the temperature
+    values are all out of whack. Thanks to Stephanie, our resident technician and
+    team captain, we found that the new optimal temperatures for Plant A, Plant B
+    and Plant C are 46\xB0, 53\xB0 and 58\xB0 respectively. The values are absurd,
+    I know, but that\u2019s not the actual temperature, just what the sensor shows.
+    Hopefully, no more rotten fruits. Can\u2019t afford it right now - we\u2019re
+    running dangerously low on fertilizer. We have to ration for now but later\u2026
+    Well, let\u2019s hope it doesn\u2019t get to that."

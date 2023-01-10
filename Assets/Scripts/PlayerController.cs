@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public static Action OnCloseDatapad;
     public static Action OnStopUsingComputer;
 
+    public State CurrentState => _currentState;
+
     public enum State { Movement, Sleep, Datapad, Computer, Dead }
 
     [SerializeField] private float walkSpeed = 2f;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
 
+        _interactor.enabled = _currentState != State.Computer;
         if (_currentState != State.Movement) return;
 
         Look();

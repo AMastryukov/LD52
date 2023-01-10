@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class BaseComputer : Interactable
 {
+    public override string InteractionString => "Use";
+
     public string WarningText { get; set; }
     public string BroadcastText { get; set; }
 

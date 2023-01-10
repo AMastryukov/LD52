@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 6
+  m_EditorClassIdentifier: 
+  note: To grow food, I need to get fertilizer from the dispener, place it in the
+    planter, get a plant from the dispenser, plant it, and set the correct water
+    pressure & temperature.
+  voiceClip: {fileID: 8300000, guid: cc0d424221e632d40b2775ee2c36f822, type: 3}
+  subtitle: "<b>Mitch:</b> I thought it was Kerry at first, since he\u2019s the one
+    that broke the temperature sensor and water valve last week but this time I know
+    Stephanie is behind this. I don\u2019t know how she\u2019s doing it but she\u2019s
+    making me forget things. I had to ask Donovan to give me a tour of the base today
+    because I forgot the layout. She\u2019s literally wiping my memories. This is
+    not some feeble attempt to undermine my experiments, no - she\u2019s trying to
+    kill the entire crew. Extraction is next week, I have to plant. Okay, plants
+    take approximately one week to grow right? Yeah. I need to get the fertilizer
+    from the dispenser, put it in the planter near the windows because plants need
+    light. Then, I get one of the plants from the plant dispenser - A, B or C and
+    plant it. Then, set the temperature & water pressure according to the right conditions
+    for the specific plant. Okay, at least I remember the basics\u2026"

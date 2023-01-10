@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour
 {
     public static Action<string> OnDeath;
@@ -13,9 +14,12 @@ public class Player : MonoBehaviour
     public int Hunger { get; set; } = 0;
 
     [SerializeField] private GameObject suitHelmet;
+    [SerializeField] private AudioClip putOnSuit;
+    [SerializeField] private AudioClip takeOffSuit;
 
     private LayerMask _airMask;
     private PlayerController _controller;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -23,13 +27,14 @@ public class Player : MonoBehaviour
         _airMask = LayerMask.GetMask("Air");
 
         _controller = GetComponent<PlayerController>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
         // Equip a space suit from the beginning
         var spaceSuit = GetComponentInChildren<SpaceSuit>(true);
-        if (spaceSuit != null) PutOnSpaceSuit(spaceSuit);
+        if (spaceSuit != null) PutOnSpaceSuit(spaceSuit, true);
     }
 
     private void Update()
@@ -57,13 +62,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PutOnSpaceSuit(SpaceSuit suit)
+    public void PutOnSpaceSuit(SpaceSuit suit, bool silent = false)
     {
         SpaceSuit = suit;
         SpaceSuit.transform.SetParent(transform);
         SpaceSuit.gameObject.SetActive(false);
 
+        _audioSource.Stop();
         suitHelmet.SetActive(true);
+
+        if (!silent) _audioSource.PlayOneShot(putOnSuit);
+        _audioSource.Play();
     }
 
     public void TakeOffSpaceSuit()
@@ -73,6 +82,9 @@ public class Player : MonoBehaviour
         SpaceSuit = null;
 
         suitHelmet.SetActive(false);
+
+        _audioSource.Stop();
+        _audioSource.PlayOneShot(takeOffSuit);
     }
 
     public void GoToSleep()
@@ -92,6 +104,9 @@ public class Player : MonoBehaviour
 
     private void Die(string cause)
     {
+        _audioSource.Stop();
+        _audioSource.volume = 0f;
+
         IsDead = true;
         OnDeath?.Invoke(cause);
     }

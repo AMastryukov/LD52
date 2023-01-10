@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 3
+  m_EditorClassIdentifier: 
+  note: Beds are in Habitat A. Plants (food) are in Habitat B. Oxygen tank refill
+    in Habitat C. Solar array is outside.
+  voiceClip: {fileID: 8300000, guid: 1a706718e0e3a084eb4b219a2b3a886c, type: 3}
+  subtitle: "<b>Donovan:</b> Something\u2019s not adding up. We sent the extraction
+    request and got a response within a day. Since then, it\u2019s been dead. Not
+    even a handshake. Literally radio silence. It\u2019s not like Command to do this,
+    and it certainly isn\u2019t my first time but their orders are clear - await
+    extraction. And Mitch has been acting weird recently. Two nights ago I woke up
+    and saw him hovering over Stephanie mumbling something to himself. And today
+    he asked me to give him a tour of our base like he doesn\u2019t take daily walks
+    around it. Kind of strange, but I obliged - \u201CAs we exit Habitat A, you will
+    see Habitat B, where our plants are grown and stored. On the right, we have the
+    solar array, which powers all habitats, and around the corner to the right is
+    Habitat C, where we refill the oxygen tanks for our space suits\u201D. I have
+    to admit - it would have been fun if Mitch didn\u2019t take it so seriously.
+    He legitimately seemed confused and intrigued, like it was his first time here.
+    I\u2019m going to talk to Kerry about doing a psych eval once I come back from
+    my mini trip - gonna head out to the canyon to try to send a signal from there
+    just in case."

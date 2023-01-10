@@ -3,6 +3,8 @@ using System;
 
 public class Voicenote : Interactable
 {
+    public override string InteractionString => "Take Voicenote";
+
     [SerializeField] private VoicenoteData data;
 
     public static Action<VoicenoteData> OnVoiceNotePickedUp;

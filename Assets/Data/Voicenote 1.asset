@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 1
+  m_EditorClassIdentifier: 
+  note: I can stow my spacesuit on the spacesuit stand when I'm not using it
+  voiceClip: {fileID: 8300000, guid: 4cf86f2cc29c6884e88455f17e0eb0ba, type: 3}
+  subtitle: "<b>Stephanie:</b> Well, I finally got around to fixing the spacesuit
+    stands so now we don\u2019t have to dump them on the ground or wear them all
+    the time. I put them at the entrance of every single habitat for ease of use.
+    Just remember to take them off as soon as you enter, I\u2019m tired of dusting
+    everything. Remember - right out of the airlock, take off and stow your damn
+    space suit. Just remember to put it back on when you exit\u2026 Oh, and that\u2019s
+    an order"

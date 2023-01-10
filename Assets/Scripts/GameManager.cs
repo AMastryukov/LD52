@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(TimelineManager))]
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
     public static bool ShowIntro { get; set; } = true;
@@ -25,7 +26,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Ending")]
     [SerializeField] private Dispenser fertilizerDispenser;
-    [SerializeField] private Voicenote voiceNote;
+    [SerializeField] private Door lockedDoor;
+
+    [Header("Music")]
+    [SerializeField] private AudioClip intro;
+    [SerializeField] private AudioClip dayZero;
+    [SerializeField] private AudioClip dayOne;
+    [SerializeField] private AudioClip solarFlare;
+    [SerializeField] private AudioClip dustStormTrack;
+    [SerializeField] private AudioClip death;
+    [SerializeField] private AudioClip ending;
 
     private SolarPanel[] _solarArray;
     private Window[] _windows;
@@ -36,6 +46,7 @@ public class GameManager : MonoBehaviour
     private Plant[] _plants;
 
     private int _foodReserves = 0;
+    private AudioSource _musicSource;
 
     private void Awake()
     {
@@ -46,14 +57,20 @@ public class GameManager : MonoBehaviour
         _computer = FindObjectOfType<BaseComputer>();
         _player = FindObjectOfType<Player>();
 
+        _musicSource = GetComponent<AudioSource>();
+
         TimelineManager.OnDayAdvanced += AdvanceDay;
         Planter.OnPlantHarvested += HandleHarvest;
+        Player.OnDeath += PlayDeathMusic;
+        EndingTrigger.OnEnding += PlayEndingMusic;
     }
 
     private void OnDestroy()
     {
         TimelineManager.OnDayAdvanced -= AdvanceDay;
         Planter.OnPlantHarvested -= HandleHarvest;
+        Player.OnDeath -= PlayDeathMusic;
+        EndingTrigger.OnEnding -= PlayEndingMusic;
     }
 
     private void Start()
@@ -85,7 +102,17 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 31:
-                // TODO: Spawn a voice note at the fertilizer dispenser
+                // fuck it, just open the door
+                lockedDoor.IsLocked = false;
+                StartCoroutine(lockedDoor.OpenDoor());
+
+                // empty all dispensers
+                var dispensers = FindObjectsOfType<Dispenser>();
+                foreach (var dispenser in dispensers)
+                {
+                    dispenser.Remaining = 0;
+                }
+
                 break;
         }
 
@@ -201,11 +228,17 @@ public class GameManager : MonoBehaviour
         if (ShowIntro)
         {
             Debug.Log("Intro would go here");
+            _musicSource.clip = intro;
+            _musicSource.Play();
+
             ShowIntro = false;
         }
         else
         {
             Debug.Log("Skipping intro");
+
+            _musicSource.clip = dayZero;
+            _musicSource.Play();
         }
     }
 
@@ -213,6 +246,9 @@ public class GameManager : MonoBehaviour
     {
         habitatB.Airlock.Unlock();
         habitatB.NoPower = false;
+
+        _musicSource.clip = dayOne;
+        _musicSource.Play();
     }
 
     private void SolarFlare()
@@ -230,6 +266,9 @@ public class GameManager : MonoBehaviour
 
         // Tell base computer to show solar flare warning
         _computer.WarningText = "WARNING: SOLAR FLARE DETECTED";
+
+        _musicSource.clip = solarFlare;
+        _musicSource.Play();
     }
 
     private void StartDustStorm()
@@ -238,6 +277,9 @@ public class GameManager : MonoBehaviour
 
         // Tell base computer to show dust storm warning
         _computer.WarningText = "WARNING: DUST STORM INCOMING";
+
+        _musicSource.clip = dustStormTrack;
+        _musicSource.Play();
     }
 
     private void EndDustStorm()
@@ -259,5 +301,17 @@ public class GameManager : MonoBehaviour
         }
 
         _computer.WarningText = "";
+    }
+
+    private void PlayDeathMusic(string cause)
+    {
+        _musicSource.Stop();
+        _musicSource.PlayOneShot(death);
+    }
+
+    private void PlayEndingMusic()
+    {
+        _musicSource.Stop();
+        _musicSource.PlayOneShot(ending);
     }
 }

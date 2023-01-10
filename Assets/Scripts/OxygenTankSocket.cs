@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OxygenTankSocket : Interactable
 {
+    public override string InteractionString => "Place Oxygen Tank";
+
     public OxygenTank Tank => tank;
     [SerializeField] private OxygenTank tank;
 

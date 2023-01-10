@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 5
+  m_EditorClassIdentifier: 
+  note: 'The optimal water pressures for plants are - A: 56, B: 49, C: 63.'
+  voiceClip: {fileID: 8300000, guid: 6d6abc9d2459d2b4cba341490746ab4f, type: 3}
+  subtitle: "<b>Mitch:</b> The water pressure valve was damaged some time last night.
+    I don\u2019t know why, but the values are messed up. Took me hours to figure
+    out the new pressures - 56 for A, 49 for B and 63 for C. Kerry was on harvest
+    duty yesterday, and he said it was all fine when he left but I think he knows
+    something that he\u2019s not telling me. Is he trying to hide something? Maybe
+    he was the one who broke the temperature sensor last week and, and he\u2019s
+    trying to sabotage my experiments? But why would he do that? It doesn\u2019t
+    make sense\u2026 I\u2019m going to keep an eye on him just in case.\r"

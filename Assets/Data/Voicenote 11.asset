@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 11
+  m_EditorClassIdentifier: 
+  note: I'm going to be sick
+  voiceClip: {fileID: 8300000, guid: 52460bb8b165ff346a1a65545ccd7c61, type: 3}
+  subtitle: "<b>Mitch:</b> My childhood friend came to visit me last night\u2026
+    He said I looked pale, needed to drink more water. But I don\u2019t know\u2026
+    \rI only saw it in a dream one time. Ah, remember the fireworks? Those were the
+    days. \rI still hear you, tapping on the walls. \rI think Stephanie\u2019s was
+    more tender, but Kerry was fatter. Does that make sense? Even on a cloudy day?\r
+    But\u2026 no\u2026 he didn\u2019t mean it. How would he know they aren\u2019t
+    coming? \rMy friend, you don\u2019t remember? He died 8 years ago. \rIs it my
+    turn?\r I\u2019m gonna lie down\u2026\r"

@@ -5,6 +5,8 @@ using System;
 
 public class SpaceSuit : Interactable
 {
+    public override string InteractionString => "Put on";
+
     public Action OnTaken;
 
     public OxygenTank OxygenTank => oxygenTankSocket.Tank;

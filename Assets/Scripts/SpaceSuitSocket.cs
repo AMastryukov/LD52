@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class SpaceSuitSocket : Interactable
 {
+    public override string InteractionString => "Take off Spacesuit";
+
     [SerializeField] private SpaceSuit suit;
 
     private void Start()

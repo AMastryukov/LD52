@@ -453,7 +453,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8326758556579299514, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
+      propertyPath: sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 653ba508aa9856a4196d5a12f5506716, type: 3}
+    - target: {fileID: 8326758556579299514, guid: 5ceff724e599a404b888ebfd8fc51ee9,
+        type: 3}
       propertyPath: prefab
+      value: 
+      objectReference: {fileID: 2072966283907631365, guid: e30995ab1f55d544c815939ea839c08c,
+        type: 3}
+    - target: {fileID: 8326758556579299514, guid: 5ceff724e599a404b888ebfd8fc51ee9,
+        type: 3}
+      propertyPath: dispenserPrefab
       value: 
       objectReference: {fileID: 2072966283907631365, guid: e30995ab1f55d544c815939ea839c08c,
         type: 3}

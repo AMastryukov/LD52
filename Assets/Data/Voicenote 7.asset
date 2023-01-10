@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f74f8f688b7493458da353f6485b732, type: 3}
+  m_Name: Voicenote 7
+  m_EditorClassIdentifier: 
+  note: In case of solar flare, go to the solar array and reset the console.
+  voiceClip: {fileID: 8300000, guid: aaeedfa33847c3249ab532bad73c3b64, type: 3}
+  subtitle: "<b>Stephanie:</b> A nasty solar flare hit us today\u2026 all solar power
+    is down and requires a reboot. I asked Mitch to go out to the solar array to
+    fix it but he just stared at me. I had to explain to him how to do it 3 times\u2026
+    it couldn\u2019t be simpler than it is - just press the reset on the solar control
+    panel and it will start the power back up. He gave me this\u2026 blank stare.
+    Then he just\u2026 left\u2026 Donovan still hasn\u2019t returned from his trip
+    to the canyon. He should have been back by now. I am starting to worry about
+    him, we might need to go out and look for him, he didn\u2019t bring enough oxygen
+    to last him more than 2 days."

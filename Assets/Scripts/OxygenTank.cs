@@ -5,7 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(ValueControl))]
 public class OxygenTank : Holdable
 {
+    public override string InteractionString => "Take Oxygen Tank";
+
     public float Amount => _oxygen.Current;
+    public float Fraction => _oxygen.Current / _oxygen.max;
     public bool IsFull => Amount == _oxygen.max;
 
     private ValueControl _oxygen;

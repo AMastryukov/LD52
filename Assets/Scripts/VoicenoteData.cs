@@ -8,5 +8,6 @@ public class VoicenoteData : ScriptableObject
 {
     public string note;
     public AudioClip voiceClip;
+    [TextArea]
     public string subtitle;
 }

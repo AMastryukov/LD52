@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Datapad : MonoBehaviour
 {
@@ -60,5 +61,8 @@ public class Datapad : MonoBehaviour
         newEntry.Initialize(data);
 
         _entries.Add(newEntry);
+
+        // Automatically play the entry when picked up
+        newEntry.PlayEntry();
     }
 }
