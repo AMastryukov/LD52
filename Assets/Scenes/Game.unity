@@ -783,6 +783,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 1919394759340819574, guid: ee6625cb425b55946a18c5e3eaf272e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1919394759340819575, guid: ee6625cb425b55946a18c5e3eaf272e4,
         type: 3}
       propertyPath: m_RootOrder
