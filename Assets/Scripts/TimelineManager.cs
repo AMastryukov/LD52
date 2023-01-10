@@ -18,6 +18,11 @@ public class TimelineManager : MonoBehaviour
         OnDayAdvanced?.Invoke(_days[_currentIndex - 1], CurrentDay);
     }
 
+    public void ResetTimeline()
+    {
+        _currentIndex = 0;
+    }
+
     private void Awake()
     {
         Bed.OnSleep += AdvanceDay;

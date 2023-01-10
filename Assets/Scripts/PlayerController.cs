@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public static Action OnCloseDatapad;
     public static Action OnStopUsingComputer;
 
-    public enum State { Movement, Sleep, Datapad, Computer }
+    public enum State { Movement, Sleep, Datapad, Computer, Dead }
 
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float crouchSpeed = 1f;
@@ -31,6 +31,13 @@ public class PlayerController : MonoBehaviour
         _interactor = _view.GetComponent<PlayerInteractor>();
         _controller = GetComponent<CharacterController>();
         _camera = _view.GetComponentInChildren<Camera>().transform;
+
+        Player.OnDeath += Dead;
+    }
+
+    private void OnDestroy()
+    {
+        Player.OnDeath -= Dead;
     }
 
     private void Update()
@@ -41,9 +48,9 @@ public class PlayerController : MonoBehaviour
 
         Look();
         Move();
-        Interact();
-
         Crouch();
+
+        Interact();
     }
 
     private void GetInput()
@@ -159,6 +166,11 @@ public class PlayerController : MonoBehaviour
         if (_currentState != State.Sleep) return;
         _currentState = State.Movement;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Dead(string cause)
+    {
+        _currentState = State.Dead;
     }
     #endregion
 

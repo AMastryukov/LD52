@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
+    public static Action<string> OnDeath;
+
     public SpaceSuit SpaceSuit { get; private set; }
     public PlayerHands Hands { get; private set; }
     public bool IsWearingSpaceSuit => SpaceSuit != null;
@@ -82,15 +85,15 @@ public class Player : MonoBehaviour
         _controller.WakeUp();
     }
 
-    public void Kill(string reason)
+    public void Kill(string cause)
     {
-        Die(reason);
+        Die(cause);
     }
 
     private void Die(string cause)
     {
         IsDead = true;
-        Debug.Log($"[YOU ARE DEAD]: {cause}");
+        OnDeath?.Invoke(cause);
     }
 
     private Collider[] _airVolumes = new Collider[1];

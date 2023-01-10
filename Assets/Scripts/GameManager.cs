@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(TimelineManager))]
 public class GameManager : MonoBehaviour
 {
+    public static bool ShowIntro { get; set; } = true;
+
     public int Day => _timeline.CurrentDay;
     public int FoodReserves => _foodReserves;
 
@@ -44,31 +46,28 @@ public class GameManager : MonoBehaviour
         _computer = FindObjectOfType<BaseComputer>();
         _player = FindObjectOfType<Player>();
 
-        TimelineManager.OnDayAdvanced += SetDay;
+        TimelineManager.OnDayAdvanced += AdvanceDay;
         Planter.OnPlantHarvested += HandleHarvest;
     }
 
     private void OnDestroy()
     {
-        TimelineManager.OnDayAdvanced -= SetDay;
+        TimelineManager.OnDayAdvanced -= AdvanceDay;
         Planter.OnPlantHarvested -= HandleHarvest;
     }
 
     private void Start()
     {
-        SetDay(0, 0);
+        StartGame();
+        _computer.Refresh();
     }
 
-    private void SetDay(int previous, int current)
+    private void AdvanceDay(int previous, int current)
     {
         KillGrownPlants();
 
         switch (current)
         {
-            case 0:
-                StartGame();
-                break;
-
             case 1:
                 EnableHabitatB();
                 break;
@@ -173,8 +172,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    private void StartGame()
+    public void StartGame()
     {
+        // Reset timeline & game state
+        _timeline.ResetTimeline();
+        Cursor.lockState = CursorLockMode.Locked;
+
         // Lock all habitats except Habitat A
         habitatA.Airlock.Unlock();
         habitatB.Airlock.Lock();
@@ -193,6 +196,17 @@ public class GameManager : MonoBehaviour
         solarPanelControl.Enable();
 
         _computer.WarningText = "";
+
+        // Show intro only once
+        if (ShowIntro)
+        {
+            Debug.Log("Intro would go here");
+            ShowIntro = false;
+        }
+        else
+        {
+            Debug.Log("Skipping intro");
+        }
     }
 
     private void EnableHabitatB()
