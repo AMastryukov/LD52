@@ -12,11 +12,13 @@ public class VoicenotePlayer : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         DatapadEntry.OnPlayVoicenote += PlayVoiceNote;
+        Bed.OnSleep += StopVoiceNote;
     }
 
     private void OnDestroy()
     {
         DatapadEntry.OnPlayVoicenote -= PlayVoiceNote;
+        Bed.OnSleep -= StopVoiceNote;
     }
 
     public void PlayVoiceNote(VoicenoteData data)
@@ -24,5 +26,10 @@ public class VoicenotePlayer : MonoBehaviour
         _audioSource.Stop();
         _audioSource.clip = data.voiceClip;
         _audioSource.Play();
+    }
+
+    private void StopVoiceNote()
+    {
+        _audioSource.Stop();
     }
 }

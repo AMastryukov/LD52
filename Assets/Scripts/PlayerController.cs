@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public State CurrentState => _currentState;
 
-    public enum State { Movement, Sleep, Datapad, Computer, Dead }
+    public enum State { Movement, Sleep, Datapad, Computer, Dead, Frozen }
 
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float crouchSpeed = 1f;
@@ -54,6 +54,11 @@ public class PlayerController : MonoBehaviour
         Crouch();
 
         Interact();
+    }
+
+    public void LookAt(Transform transform)
+    {
+        _view.LookAt(transform);
     }
 
     private void GetInput()

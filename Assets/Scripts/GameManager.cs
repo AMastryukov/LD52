@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private int _foodReserves = 0;
     private AudioSource _musicSource;
+    private IntroScreen _introScreen;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         _timeline = GetComponent<TimelineManager>();
         _computer = FindObjectOfType<BaseComputer>();
         _player = FindObjectOfType<Player>();
+        _introScreen = FindObjectOfType<IntroScreen>();
 
         _musicSource = GetComponent<AudioSource>();
 
@@ -102,7 +104,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 31:
-                // fuck it, just open the door
+                // fuck it, just open the final door
                 lockedDoor.IsLocked = false;
                 StartCoroutine(lockedDoor.OpenDoor());
 
@@ -227,7 +229,10 @@ public class GameManager : MonoBehaviour
         // Show intro only once
         if (ShowIntro)
         {
-            Debug.Log("Intro would go here");
+            _introScreen.ShowIntro();
+
+            _player.GetComponent<PlayerController>().LookAt(habitatA.Airlock.transform);
+
             _musicSource.clip = intro;
             _musicSource.Play();
 
@@ -235,8 +240,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Skipping intro");
-
             _musicSource.clip = dayZero;
             _musicSource.Play();
         }
