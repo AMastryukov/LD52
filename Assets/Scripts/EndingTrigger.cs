@@ -12,6 +12,7 @@ public class EndingTrigger : MonoBehaviour
         if (other.GetComponent<Player>() != null)
         {
             OnEnding?.Invoke();
+            Destroy(gameObject);
         }
     }
 }

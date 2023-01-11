@@ -490,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7712397976067807868}
   - component: {fileID: 7712397976067807869}
+  - component: {fileID: 1903900088}
   - component: {fileID: 7712397976067807870}
   - component: {fileID: 7712397976067807871}
   - component: {fileID: 7712397976067807859}
@@ -545,6 +546,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 5
   m_TargetDisplay: 0
+--- !u!225 &1903900088
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7712397976067807864}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &7712397976067807870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35525c81a4f0f6344bba8404ba552f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 7712397976110263593}
   causeOfDeath: {fileID: 7712397974602706604}
+  restartButton: {fileID: 7712397974646503460}
 --- !u!1 &7712397976110263595
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class IntroScreen : MonoBehaviour
         sequence.AppendInterval(3f);
         sequence.Append(quoteCG.DOFade(0f, 3f));
         sequence.AppendInterval(2f);
-        sequence.Append(mainCanvasGroup.DOFade(0f, 5f));
+        sequence.Append(mainCanvasGroup.DOFade(0f, 3f));
         sequence.OnComplete(() =>
         {
             mainCanvas.enabled = false;

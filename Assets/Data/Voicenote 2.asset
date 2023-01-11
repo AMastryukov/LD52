@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Voicenote 2
   m_EditorClassIdentifier: 
   note: I can sleep in a bed to pass the time.
-  voiceClip: {fileID: 8300000, guid: a11d46c4ce672e34292949a670479304, type: 3}
+  voiceClip: {fileID: 8300000, guid: caa29be773154a540b66f2d4663f9143, type: 3}
   subtitle: "<b>Kerry:</b> I never thought how incredibly boring it is here without
     Command beaming us Datapad content. We haven\u2019t heard a response from them
     about the extraction in over a week. I\u2019ll be honest - it worries me a bit,

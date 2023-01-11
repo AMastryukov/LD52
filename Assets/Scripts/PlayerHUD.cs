@@ -48,12 +48,14 @@ public class PlayerHUD : MonoBehaviour
 
         Voicenote.OnVoiceNotePickedUp += ShowSubtitle;
         DatapadEntry.OnPlayVoicenote += ShowSubtitle;
+        Bed.OnSleep += StopSubtitles;
     }
 
     private void OnDestroy()
     {
         Voicenote.OnVoiceNotePickedUp -= ShowSubtitle;
         DatapadEntry.OnPlayVoicenote -= ShowSubtitle;
+        Bed.OnSleep -= StopSubtitles;
     }
 
     private void Start()
@@ -100,6 +102,12 @@ public class PlayerHUD : MonoBehaviour
 
     private void ShowSubtitle(VoicenoteData data)
     {
+        StopSubtitles();
+        _subCoroutine = StartCoroutine(ShowSubtitleCoroutine(data));
+    }
+
+    private void StopSubtitles()
+    {
         if (_subCoroutine != null)
         {
             StopCoroutine(_subCoroutine);
@@ -107,8 +115,6 @@ public class PlayerHUD : MonoBehaviour
 
             subtitleText.text = "";
         }
-
-        _subCoroutine = StartCoroutine(ShowSubtitleCoroutine(data));
     }
 
     private IEnumerator ShowSubtitleCoroutine(VoicenoteData data)

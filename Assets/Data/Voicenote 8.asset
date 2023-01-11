@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   note: In case of dust storms, first - close the Habitat B windows. After the storm,
     open them and clean the dust off the solar panels.
-  voiceClip: {fileID: 8300000, guid: dd2a5051e1b829a42bfb13bd93da70a7, type: 3}
+  voiceClip: {fileID: 8300000, guid: 270bb501d2c9dc54184f7a84a0263358, type: 3}
   subtitle: "<b>Kerry:</b> I hate dust storms. First, we have to prepare - go to
     Habitat B windows and close them. Then, once the storm passes, go to the solar
     array and wipe down every single panel. Oh, and if you don\u2019t? No power,
