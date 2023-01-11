@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     private Player _player;
     private Plant[] _plants;
 
-    private int _foodReserves = 0;
+    private int _foodReserves = 7;
     private AudioSource _musicSource;
     private IntroScreen _introScreen;
 

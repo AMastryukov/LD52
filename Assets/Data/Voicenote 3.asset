@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   note: Beds are in Habitat A. Plants (food) are in Habitat B. Oxygen tank refill
     in Habitat C. Solar array is outside.
-  voiceClip: {fileID: 8300000, guid: 1a706718e0e3a084eb4b219a2b3a886c, type: 3}
+  voiceClip: {fileID: 8300000, guid: 2c91f344a8dca5f4092e6e359092f0b8, type: 3}
   subtitle: "<b>Donovan:</b> Something\u2019s not adding up. We sent the extraction
     request and got a response within a day. Since then, it\u2019s been dead. Not
     even a handshake. Literally radio silence. It\u2019s not like Command to do this,

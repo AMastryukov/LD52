@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Voicenote 1
   m_EditorClassIdentifier: 
   note: I can stow my spacesuit on the spacesuit stand when I'm not using it
-  voiceClip: {fileID: 8300000, guid: 4cf86f2cc29c6884e88455f17e0eb0ba, type: 3}
+  voiceClip: {fileID: 8300000, guid: 76beca896cd3d234e81d6d03024c7565, type: 3}
   subtitle: "<b>Stephanie:</b> Well, I finally got around to fixing the spacesuit
     stands so now we don\u2019t have to dump them on the ground or wear them all
     the time. I put them at the entrance of every single habitat for ease of use.

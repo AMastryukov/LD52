@@ -318,7 +318,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 945960112, guid: 7d322d3505d879b49919683886e7d498, type: 3}
       propertyPath: m_text
-      value: Some bugs are still being ironed out.
+      value: Best played with headphones
       objectReference: {fileID: 0}
     - target: {fileID: 6037636078447560744, guid: 7d322d3505d879b49919683886e7d498,
         type: 3}

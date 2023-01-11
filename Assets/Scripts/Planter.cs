@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(AudioSource))]
 public class Planter : Interactable
 {
     public static Action<bool> OnPlantHarvested;
@@ -23,6 +24,13 @@ public class Planter : Interactable
     [Header("References")]
     [SerializeField] private GameObject fertilizerMesh;
     [SerializeField] private Transform plantSocket;
+
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -78,6 +86,8 @@ public class Planter : Interactable
         CurrentPlant = plant;
         CurrentPlant.AttachToSocket(plantSocket);
         CurrentPlant.IsPlanted = true;
+
+        _audioSource.Play();
     }
 
     private void Harvest()
@@ -91,5 +101,7 @@ public class Planter : Interactable
         IsHarvestable = false;
         IsFertilized = false;
         CurrentPlant = null;
+
+        _audioSource.Play();
     }
 }

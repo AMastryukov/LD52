@@ -13,12 +13,14 @@ public class VoicenotePlayer : MonoBehaviour
 
         DatapadEntry.OnPlayVoicenote += PlayVoiceNote;
         Bed.OnSleep += StopVoiceNote;
+        Player.OnDeath += StopVoiceNote;
     }
 
     private void OnDestroy()
     {
         DatapadEntry.OnPlayVoicenote -= PlayVoiceNote;
         Bed.OnSleep -= StopVoiceNote;
+        Player.OnDeath -= StopVoiceNote;
     }
 
     public void PlayVoiceNote(VoicenoteData data)
@@ -31,5 +33,10 @@ public class VoicenotePlayer : MonoBehaviour
     private void StopVoiceNote()
     {
         _audioSource.Stop();
+    }
+
+    private void StopVoiceNote(string s)
+    {
+        StopVoiceNote();
     }
 }

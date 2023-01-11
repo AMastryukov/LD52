@@ -43,22 +43,13 @@ public class Player : MonoBehaviour
 
         CheckForAir();
 
+        // Drain spacesuit oxygen
+        if (IsWearingSpaceSuit) SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
+
         if (IsInSpace)
         {
-            if (IsWearingSpaceSuit)
-            {
-                if (SpaceSuit.OxygenTank == null || SpaceSuit.OxygenTank.Amount == 0f)
-                {
-                    Die("Asphyxiation due to lack of oxygen");
-                    return;
-                }
-
-                SpaceSuit.OxygenTank.ConsumeOxygen(Time.deltaTime);
-            }
-            else
-            {
-                Die("Decompression due to exposure to the vacuum of space");
-            }
+            if (IsWearingSpaceSuit && SpaceSuit.OxygenTank.Amount == 0f) Die("Asphyxiation due to lack of oxygen");
+            else if (!IsWearingSpaceSuit) Die("Decompression due to exposure to the vacuum of space");
         }
     }
 
