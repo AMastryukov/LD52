@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         _lookInput = new Vector2(-Input.GetAxisRaw("Mouse Y"), Input.GetAxisRaw("Mouse X"));
         _moveInput = new Vector2(Input.GetAxisRaw("Vertical"), Input.GetAxisRaw("Horizontal")).normalized;
 
-        _isCrouching = Input.GetKey(KeyCode.LeftControl);
+        _isCrouching = Input.GetKey(KeyCode.C);
 
         // Datapad & Computer input
         if (Input.GetKeyDown(KeyCode.Tab))

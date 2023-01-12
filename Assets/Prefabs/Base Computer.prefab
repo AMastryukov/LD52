@@ -205,7 +205,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -28, y: 0.000010049}
-  m_SizeDelta: {x: 150, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3055122100127338651
 CanvasRenderer:
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Habitat C
+  m_text: 'Habitat C Lights
 
     <size=14>Expected Online in 10 days</size>'
   m_isRightToLeft: 0
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WARNING: SOLAR STORM DETECTED'
+  m_text: 'WARNING: SOLAR FLARE DETECTED'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -993,8 +993,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d7aaa9f0fbe7449ab87b7ad4177ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerState: {fileID: 0}
+  habitat: {fileID: 0}
   statusText: {fileID: 3055122100543098211}
   button: {fileID: 3055122100793407410}
   buttonText: {fileID: 3055122101025624568}
@@ -1244,7 +1244,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -28, y: 0.000010049}
-  m_SizeDelta: {x: 150, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3055122100793407408
 CanvasRenderer:
@@ -1785,7 +1785,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -28, y: 0.000010049}
-  m_SizeDelta: {x: 150, y: 50}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3055122101333117616
 CanvasRenderer:
@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d7aaa9f0fbe7449ab87b7ad4177ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerState: {fileID: 0}
+  habitat: {fileID: 0}
   statusText: {fileID: 3055122101703746132}
   button: {fileID: 3055122101333117618}
   buttonText: {fileID: 3055122101101421992}
@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Habitat B
+  m_text: 'Habitat B Lights
 
     <size=14>Expected Online in 10 days</size>'
   m_isRightToLeft: 0
@@ -2734,7 +2734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Habitat A
+  m_text: 'Habitat A Lights
 
     <size=14>Expected Online in 10 days</size>'
   m_isRightToLeft: 0
@@ -3070,7 +3070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d7aaa9f0fbe7449ab87b7ad4177ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerState: {fileID: 0}
+  habitat: {fileID: 0}
   statusText: {fileID: 3055122102041100986}
   button: {fileID: 3055122100127338653}
   buttonText: {fileID: 3055122101920333606}

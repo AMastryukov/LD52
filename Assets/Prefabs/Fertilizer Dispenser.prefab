@@ -401,6 +401,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1695757975913731615, guid: 5ceff724e599a404b888ebfd8fc51ee9,
+        type: 3}
+      propertyPath: customInteractionText
+      value: Fertilizer
+      objectReference: {fileID: 0}
     - target: {fileID: 3934812078350653242, guid: 5ceff724e599a404b888ebfd8fc51ee9,
         type: 3}
       propertyPath: m_LocalPosition.x

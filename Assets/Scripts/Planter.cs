@@ -8,6 +8,17 @@ public class Planter : Interactable
 {
     public static Action<bool> OnPlantHarvested;
 
+    public override string InteractionString
+    {
+        get
+        {
+            if (!IsFertilized) return "Fertilize";
+            if (IsHarvestable) return "Harvest";
+
+            return "Wait 7 Days";
+        }
+    }
+
     private bool _isFertilized;
     public bool IsFertilized
     {
@@ -86,6 +97,7 @@ public class Planter : Interactable
         CurrentPlant = plant;
         CurrentPlant.AttachToSocket(plantSocket);
         CurrentPlant.IsPlanted = true;
+        CurrentPlant.GetComponent<Collider>().enabled = false;
 
         _audioSource.Play();
     }

@@ -1,20 +1,12 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DustTarget))]
-public class Window : Interactable
+public class Window : DustTarget
 {
-    public DustTarget DustTarget => _dust;
+    public override string InteractionString => IsDusty ? "Dust Off" : "Close/Open Window";
+
     public bool IsClosed { get; private set; }
-    public bool IsDusty => _dust.IsDusty;
 
     [SerializeField] private GameObject shutters;
-
-    private DustTarget _dust;
-
-    private void Awake()
-    {
-        _dust = GetComponent<DustTarget>();
-    }
 
     private void Start()
     {
@@ -35,6 +27,12 @@ public class Window : Interactable
 
     public override void Interact(Player interactor)
     {
+        if (IsDusty)
+        {
+            Clean();
+            return;
+        }
+
         if (IsClosed) OpenShutters();
         else CloseShutters();
     }

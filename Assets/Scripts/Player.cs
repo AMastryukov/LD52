@@ -80,7 +80,11 @@ public class Player : MonoBehaviour
 
     public void GoToSleep()
     {
-        _controller.TrySleep();
+        // If the player goes to sleep in the space suit, eat up all the oxygen in it
+        if (_controller.TrySleep() && IsWearingSpaceSuit)
+        {
+            SpaceSuit.OxygenTank.ConsumeOxygen(1000);
+        }
     }
 
     public void WakeUp()

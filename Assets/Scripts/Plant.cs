@@ -47,7 +47,7 @@ public class Plant : Holdable
         aliveMesh.SetActive(true);
         deadMesh.SetActive(false);
 
-        aliveMesh.transform.localScale = Vector3.one * 5f;
+        aliveMesh.transform.localScale = Vector3.one * 3f;
     }
 
     public void Kill()

@@ -86,6 +86,8 @@ public class Airlock : MonoBehaviour
         // Close both doors
         StartCoroutine(insideDoor.CloseDoor());
         StartCoroutine(outsideDoor.CloseDoor());
+
+        IsLocked = true;
     }
 
     public void Unlock()
@@ -96,5 +98,7 @@ public class Airlock : MonoBehaviour
         // Open outside door
         StartCoroutine(insideDoor.CloseDoor());
         StartCoroutine(outsideDoor.OpenDoor());
+
+        IsLocked = false;
     }
 }

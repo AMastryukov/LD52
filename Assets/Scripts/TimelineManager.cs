@@ -18,6 +18,12 @@ public class TimelineManager : MonoBehaviour
         OnDayAdvanced?.Invoke(_days[_currentIndex - 1], CurrentDay);
     }
 
+    public void SetDay(int day)
+    {
+        _currentIndex = day;
+        OnDayAdvanced?.Invoke(_days[_currentIndex - 1], CurrentDay);
+    }
+
     public void ResetTimeline()
     {
         _currentIndex = 0;

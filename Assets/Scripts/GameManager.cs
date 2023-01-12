@@ -18,9 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ValueControl _temperatureControl;
     [SerializeField] private ValueControl _pressureControl;
 
-    [Header("Dust Storm")]
-    [SerializeField] private ParticleSystem dustStorm;
-
     [Header("Solar Flare")]
     [SerializeField] private SolarPanelControl solarPanelControl;
 
@@ -268,7 +265,7 @@ public class GameManager : MonoBehaviour
         solarPanelControl.Disable();
 
         // Tell base computer to show solar flare warning
-        _computer.WarningText = "WARNING: SOLAR FLARE DETECTED";
+        _computer.WarningText = "<b>WARNING:</b> SOLAR FLARE DETECTED.\nRESET SOLAR ARRAY.";
 
         _musicSource.clip = solarFlare;
         _musicSource.Play();
@@ -276,10 +273,8 @@ public class GameManager : MonoBehaviour
 
     private void StartDustStorm()
     {
-        // TODO: Start dust storm particles
-
         // Tell base computer to show dust storm warning
-        _computer.WarningText = "WARNING: DUST STORM INCOMING";
+        _computer.WarningText = "<b>WARNING:</b> DUST STORM INCOMING.\nCLOSE HABITAT B WINDOWS.";
 
         _musicSource.clip = dustStormTrack;
         _musicSource.Play();
@@ -287,12 +282,10 @@ public class GameManager : MonoBehaviour
 
     private void EndDustStorm()
     {
-        // TODO: End dust storm particles
-
         // Put dust on solar panels
         foreach (var panel in _solarArray)
         {
-            panel.Dust.AddDust();
+            panel.AddDust();
         }
 
         // Put dust on windows
@@ -300,10 +293,13 @@ public class GameManager : MonoBehaviour
         {
             // Ignore closed windows
             if (window.IsClosed) continue;
-            window.DustTarget.AddDust();
+            window.AddDust();
         }
 
-        _computer.WarningText = "";
+        _musicSource.clip = dayZero;
+        _musicSource.Play();
+
+        _computer.WarningText = "<b>WARNING:</b> DUST OFF SOLAR ARRAY & OPEN HABITAT B WINDOWS.";
     }
 
     private void PlayDeathMusic(string cause)
@@ -316,5 +312,10 @@ public class GameManager : MonoBehaviour
     {
         _musicSource.Stop();
         _musicSource.PlayOneShot(ending);
+    }
+
+    public void OverrideFood(int food)
+    {
+        _foodReserves = food;
     }
 }

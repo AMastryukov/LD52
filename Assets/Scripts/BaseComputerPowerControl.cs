@@ -15,10 +15,16 @@ public class BaseComputerPowerControl : MonoBehaviour
 
     public void UpdateControl()
     {
-        var status = habitat.NoPower ? "<color=red>[INSUFFICIENT POWER]</color>" : "<color=green>[CONNECTED]</color>";
-        statusText.text = $"{habitat.name}\n<size=14>{status}</size>";
+        var status = habitat.Airlock.IsLocked ? "<color=red>[AIRLOCK CLOSED]</color>" : "<color=green>[AIRLOCK OPEN]</color>";
+        statusText.text = $"{habitat.name}\n<size=16>{status}</size>";
+
         button.image.color = habitat.Power.Online ? onColor : offColor;
-        buttonText.text = habitat.Power.Online ? "ON" : "OFF";
+        buttonText.text = habitat.Power.Online ? "LIGHTS ON" : "LIGHTS OFF";
+
+        if (habitat.NoPower)
+        {
+            buttonText.text = "NO POWER";
+        }
     }
 
     public void ToggleState()
